@@ -1,0 +1,32 @@
+#regi{
+    /* border: 4px solid black; */
+    box-sizing: border-box;
+    display: flex;
+    text-align: center;
+}
+.title-teg{
+    color: rgb(153, 0, 0);
+    /* width: 50%; */
+}
+
+#id_email{
+    width: 444px; 
+}
+#id_username{
+    width: 444px; 
+
+}
+#id_password1{
+    width: 444px; 
+
+}
+#id_password2{
+    width: 444px; 
+
+}
+#signup_form{
+    background-color: blue;
+}
+#id_username{
+    margin-top: 44px;
+}

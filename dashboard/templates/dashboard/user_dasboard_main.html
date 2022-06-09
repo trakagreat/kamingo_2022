@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+dashboard
+{% endblock %}
+{% block body %}
+    <div class="container d-flex justify-content-center ">
+
+
+    <div class="row justify-content-center " style="width: 100%" >
+{% for service in services %}
+
+    <div class="card m-1 shadow-sm" style="max-width: 540px;">
+  <div class="row g-0">
+      <div class="container">
+    <div class="row">
+        <div class="col-4 " style="padding: 0.15rem; justify-content: left">
+                  <img style="width: 100%; height: 100%;" src="{{ service.image.url }}" class="img-fluid rounded" alt="...">
+
+        </div>
+        <div class="col-8 col-md-8">
+                 <div class="card-body">
+        <h6 class="card-title text-truncate" >{{ service.title | title }}</h6>
+
+        <p class="card-text mb-0" style="color: green; font-weight: bold; "><i class="fas fa-rupee-sign"></i> {{ service.cost }}</p>
+        <p class="card-text mb-0" style="color: limegreen; font-weight: bold; "><i class= "fa fa-phone"></i> {{ service.contact}}</p>
+        <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class= "fas fa-star"></i> {{ service.get_rating | floatformat:1 }}</p>
+        <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
+        <a class="btn btn-primary" href="{% url 'service_edit_url' user.pk service.pk %}"> edit </a>
+
+                 </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+</div>
+{% endfor %}
+</div>
+
+</div>
+{% endblock %}

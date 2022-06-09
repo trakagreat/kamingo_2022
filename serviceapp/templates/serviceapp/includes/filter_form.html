@@ -1,0 +1,20 @@
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <select class="form-control" name="category" id="" >
+            <option selected value="{{ default_cat }}">{{ default_cat }}</option>
+        {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+        {% endfor %}
+        </select>
+        {% include 'serviceapp/includes/filter-city-field.html' %}
+
+
+        <button type="submit">submit</button>
+
+
+
+    </form>
+
+</div>

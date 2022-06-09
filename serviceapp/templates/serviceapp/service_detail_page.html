@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ratings %}
+{% block title %}
+
+{% endblock %}
+{% block css_linking_block %}
+    <link rel="stylesheet" href="{% static 'serviceapp/service_detials.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+
+    <script src="https://kit.fontawesome.com/61870727ed.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="row ">
+            <div class="col-md-6 p-3" style="background-color: white;">
+                {% if service.image %}
+                    <img  width="100%" height="500rem" style="" src="{{ service.image.url }}" alt="">
+                {% endif %}
+            </div>
+            <div class="col-md-6 p-3" style="background-color: white">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2>{{ service.title }}</h2>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <h4 class="details-headings" style="margin-bottom: 0;">
+                            Cost</h4>
+                        <h3 style="color: orangered"><i class="fas fa-rupee-sign"></i>
+                            {{ service.cost | floatformat:1 }}
+                        </h3>
+                    </div>
+                </div>
+                <div class="row text-right">
+                    <div class="col">
+                        <h3 class="details-headings">Address</h3>
+                        <p>{{ service.address }}</p>
+                    </div>
+                </div>
+                <div class="row text-right">
+                    <div class="col">
+                        <h3 class="details-headings">Contact</h3>
+
+                        <h6>
+                            <i class="fa fa-phone" aria-hidden="true"
+                               style="color: black; transform: scaleX(-1); margin-right: 0.1rem">
+                            </i>
+                            <p style="color: green">{{ service.contact }}</p>
+                        </h6>
+                    </div>
+                </div>
+                <div class="row text-right">
+                    <div class="col">
+                        <h3 class="details-headings">Rating</h3>
+                        <p style="color: orange;"><i class="fas fa-star"></i>
+                            {{ service.get_rating | floatformat:1 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-2">
+
+            {% if user.is_authenticated %}
+                {% if not user_review %}
+
+            <div class="row p-2 " style="background-color: white">
+                {% include 'serviceapp/includes/review_form.html' %}
+
+                <div class="col"></div>
+
+
+
+            </div>
+                {% else %}
+                    <div class="row p-2" style="background-color: white">
+                        <h4 style="color: yellowgreen">reviewed</h4>
+
+                    </div>
+            {% endif %}
+        {% else %}
+
+         <div class="col" >
+             <div class="row mt-2" style="background-color: white;">
+                <div class="col p-3">
+                    <h5>Please login!</h5>
+
+                <button class="btn btn-outline-primary mt-1" type="submit"> SignIn </button>
+
+                </div>
+             </div>
+         </div>
+        {% endif %}
+         <div class="col" >
+             <div class="row mt-2" style="background-color: white;">
+                <div class="col p-3">
+                    <h5>Detail about service </h5>
+                    {% if service.description %}
+                    {{ service.description|linebreaks }}
+                    {% else %}
+                        <p class="mb-0">No description is available.</p>
+                    {% endif %}
+
+                    
+                </div>
+             </div>
+         </div>
+         <div class="col ">
+        {% include 'serviceapp/includes/reviews_ratings.html' %}
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+
+.details-section{
+    list-style: none;
+
+
+font-size: large;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+
+}
+.details-headings{
+    color: gray;
+    margin-bottom: 0.1rem;
+    font-size: large;
+}
+.white-card {
+    background-color: white;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+

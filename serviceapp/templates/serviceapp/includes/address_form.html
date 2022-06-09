@@ -1,0 +1,10 @@
+{% load widget_tweaks %}
+
+<p style="margin-bottom: 0.5rem">Address line 1</p>
+{{ address_form.address_line1|add_class:'form-conntrol mb-3'}}
+<p style="margin-bottom: 0.5rem">Address line 2</p>
+{{ address_form.address_line2|add_class:'form-conntrol mb-3'}}
+<p style="margin-bottom: 0.5rem">City</p>
+{% include 'serviceapp/includes/select-search.html' %}
+<p style="margin-bottom: 0.5rem">Pincode</p>
+{{ address_form.pin_code|add_class:'form-conntrol mb-3'}}

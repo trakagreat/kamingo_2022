@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load ratings %}
+{% load widget_tweaks %}
+{% load bootstrap5 %}
+{% block title %}
+
+{% endblock %}
+{% block css_linking_block %}
+    <link rel="stylesheet" href="{% static 'serviceapp/include/service_card.css' %}">
+{#    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">#}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+    <script src="https://kit.fontawesome.com/61870727ed.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+    <div>
+       <form action="">
+          {% bootstrap_form filter.form %}
+           <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+  </div>
+    {% comment %} {% include 'serviceapp/includes/filter_form.html' %} {% endcomment %}
+<div class="container d-flex justify-content-center ">
+
+
+    <div class="row justify-content-center " style="width: 100%" >
+        {% for service in filter.qs %}
+
+            {% include 'serviceapp/includes/service_card.html' %}
+
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "account/base.html" %}
+{% load bootstrap5%}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+ <div class=" d-flex justify-content-center " style="padding: 1rem">
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}" novalidate>
+  {% csrf_token %}
+
+
+
+    <div class="shadow-sm p-4" style="background-color: white;width: fit-content;">
+        {% bootstrap_form form %}
+          <button class="btn btn-primary mb-2" type="submit">{% trans "Sign Up" %} </button>
+        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+    </div>
+
+{#  {{ form.as_p }}#}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+
+</form>
+    </div>
+
+{% endblock %}
