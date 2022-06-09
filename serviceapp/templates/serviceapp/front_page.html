@@ -18,11 +18,42 @@
     <script src="https://kit.fontawesome.com/61870727ed.js" crossorigin="anonymous"></script>
 {% endblock %}
 
-{% block body %}
-    <div>
-       <form action="">
-          {% bootstrap_form filter.form %}
-           <button type="submit" class="btn btn-primary">Search</button>
+{% block body %} 
+
+    <div style="background-color: rgb(255, 255, 255);">
+        <a class="btn btn-dark mt-3 ml-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Filter <i class=" fa-filter"></i>
+          </a>
+          
+          <div class="collapse" id="collapseExample">
+       <form action=""  class="justify-content-center">
+
+           <div class="row mt-2 ml-3">
+            <div class = " col-6 mt-1" style = "width:20rem">
+                <h6>Category</h6>
+                {{ filter.form.category | add_class:"form-control"}}
+               </div>  
+               <div class = " col-6 mt-1 " style = "width:20rem">
+                <h6>City</h6>
+                {{ filter.form.address__city| add_class:"form-control"}}
+            </div> 
+           </div>
+           <div class="row ml-3 mt-2">
+            <div class = " col-6  " style = "width:20rem">
+
+               <button type="submit" class="btn btn-primary">Search</button>
+               </div>
+        </div>
+    </div>
+        <hr>
+          
+       
+      
+
+
+          {% comment %} {% bootstrap_form filter.form %} {% endcomment %}
+          
+           
         </form>
   </div>
     {% comment %} {% include 'serviceapp/includes/filter_form.html' %} {% endcomment %}

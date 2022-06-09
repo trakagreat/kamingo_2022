@@ -17,7 +17,8 @@ from .data.citieslist import cities
 class FrontPageView(View):
     def get(self,request):
         context = {
-            'filter':ServiceFilter(request.GET, queryset=ServiceModel.objects.all())
+            'filter':ServiceFilter(request.GET, queryset=ServiceModel.objects.all()),
+            
         }
         return render(request, 'serviceapp/front_page.html', context)
         
