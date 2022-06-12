@@ -1,4 +1,8 @@
 import os.path
+from turtle import delay
+
+import requests
+
 import random
 from django.db import models
 from django.db.models.signals import post_save
@@ -24,9 +28,27 @@ class Address(models.Model):
     address_line2 = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True, verbose_name='City')
     pin_code = models.CharField(max_length=6, null=True)
-
+    locality = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return f"{self.address_line1}, {self.pin_code}, {self.city}"
+    
+    def pin_to_address(self , pin):
+        address = requests.get('https://api.postalpincode.in/pincode/' + str(pin))
+        return address.json()
+        
+
+
+
+    def save(self, *args, **kwargs):
+        try:
+            self.locality = self.pin_to_address(self.pin_code)[0]['PostOffice'][0]['Name']
+        except:
+            pass
+        super(Address, self).save(*args, **kwargs)
+        
+      
+        
+        
 
 
 class CategoryModel(models.Model):

@@ -23,43 +23,6 @@ class FrontPageView(View):
         return render(request, 'serviceapp/front_page.html', context)
         
 
-
-
-
-    # def get(self, request, category='all', city='all'):
-    #     if city == 'all' and category == 'all':
-    #         services = ServiceModel.objects.all()
-    #         default_cat = 'all'
-    #     else:
-    #         services = ServiceModel.objects.filter(address__city=city,category__name=category )
-    #     categories = CategoryModel.objects.all()
-    #     context = {
-    #         'categories': categories,
-    #         'cities': cities,
-    #         'services': services,
-    #     }
-    #     return render(request, 'serviceapp/front_page.html', context)
-
-    # def post(self, request, category, city):
-    #     selected_category = request.POST.get('category')
-    #     category = selected_category
-    #     city = request.POST.get('city')
-    #     # services = ServiceModel.objects.filter(category__name=selected_category)
-    #     # f = ServiceFilter(request.GET, queryset=ServiceModel.objects.all())
-    #     # categories = CategoryModel.objects.all()
-    #     # context = {
-    #     #     'filter': f,
-    #     #     'categories': categories,
-    #     #     'cities': cities,
-    #     #     'services': services
-    #     #
-    #     # }
-    #     return HttpResponseRedirect(reverse('front-page', kwargs={
-    #         'city':city,
-    #         'category': category,
-    #     }))
-
-
 class ServiceFormDesView(View):
     def get(self, request, slug):
         return render(request, 'serviceapp/service_form_description.html', {
@@ -149,3 +112,5 @@ class TestView(View):
 class PleaseLoginView(View):
     def get(self, requets):
         return render(requets, 'serviceapp/login_first.html')
+
+
