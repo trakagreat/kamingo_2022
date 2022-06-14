@@ -80,6 +80,13 @@ class ServiceModel(models.Model):
             return total / self.reviews.count()
         else:
             return 0
+    
+    def get_image(self):
+        try:
+            image = self.images.first().image.url
+        except:
+            image = None
+        return image
 
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.title)
