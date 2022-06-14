@@ -10,7 +10,10 @@
     fill the form please
 {% endblock %}
 {% block css_linking_block %}
+    <link rel="stylesheet" href="{% static 'serviceapp/service_form_image.css' %}">
+
     <link rel="stylesheet" href="{% static 'serviceapp/service.css' %}">
+    <link rel="stylesheet" href="{% static 'serviceapp/multistep_form.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     {#needed_for_js#}
@@ -20,7 +23,7 @@
 
 {% block body %}
 
-    <div class="d-flex justify-content-center" style="padding: 1rem; justify-content: center">
+    {% comment %} <div class="d-flex justify-content-center" style="padding: 1rem; justify-content: center">
         <div class="shadow-sm" style="padding: 1rem; background-color: white; width: 40rem">
 
 
@@ -30,7 +33,7 @@
                 <div class="mb-3">
                     {{ form.as_p }}
 {#                    {{ address_form.as_p }}#}
-                    {% include 'serviceapp/includes/address_form.html' %}
+                   
                     <div class=" d-flex justify-content-center mb-3">
                         <button type="submit" class="btn btn-outline-primary mt-2">Next</button>
                     </div>
@@ -38,9 +41,54 @@
             </form>
         </div>
 
-    </div>
+    </div> {% endcomment %}
+
+    {% comment %} multi part form {% endcomment %}
 
 
 
+    <form id="regForm" method="POST" action="{% url 'service_form_url' %}" enctype="multipart/form-data"
+    novalidate>
+        {% csrf_token %}
+        <h1>Register:</h1>
+        
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">
+            
+            {{ form.as_p }}
+        </div>
+        
+        <div class="tab">
+            
+            {% include 'serviceapp/service_form_images.html' %}
+        </div>
+        
+        <div class="tab">
+            {% include 'serviceapp/service_form_description.html' %}
+        </div>
+        
+        <div class="tab">Login Info:
+            {% include 'serviceapp/includes/address_form.html' %}
+            <script src="{% static 'serviceapp/service_form_image.js' %}">
+            </script>
+        </div>
+        
+        <div style="overflow:auto;">
+          <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button  type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+          </div>
+        </div>
+        
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+        
+        </form>
 
+<script src="{% static 'serviceapp/multistep_form.js' %}">">  </script>
 {% endblock %}

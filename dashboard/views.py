@@ -86,3 +86,28 @@ class ServiceDesUpdateView(View):
             'pk': pk,
 
         }))
+
+
+
+# def delete_service_func(request, pk, pk_service):
+#     user = User.objects.get(pk=pk)
+#     service = ServiceModel.objects.get(pk=pk_service,user=user)
+#     print(service.title)
+#     service.delete()
+#     return HttpResponseRedirect(reverse('dashboard_url', kwargs={
+#             'pk': pk,
+
+#         }))
+
+
+
+class DeleteView(View):
+    def get(self, request, pk, pk_service):
+         user = User.objects.get(pk=pk)
+         service = ServiceModel.objects.get(pk=pk_service,user=user)
+         print(service.title)
+         service.delete()
+         return HttpResponseRedirect(reverse('dashboard_url', kwargs={
+                    'pk': pk,
+
+                }))

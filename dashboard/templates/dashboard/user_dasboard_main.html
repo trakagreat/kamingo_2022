@@ -27,6 +27,36 @@ dashboard
         <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class= "fas fa-star"></i> {{ service.get_rating | floatformat:1 }}</p>
         <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
         <a class="btn btn-primary" href="{% url 'service_edit_url' user.pk service.pk %}"> edit </a>
+        
+{% comment %} delete popup {% endcomment %}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Delete
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(70, 66, 66, 0.438);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash" aria-hidden="true"></i>    Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        Are you sure you want to delete this service?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <a class="btn btn-primary" href="{% url 'service_delete_url' user.pk service.pk %}">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
                  </div>
         </div>

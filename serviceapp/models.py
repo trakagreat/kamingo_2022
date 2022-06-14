@@ -59,7 +59,7 @@ class CategoryModel(models.Model):
 
 
 class ServiceModel(models.Model):
-    image = models.ImageField(upload_to=path_and_rename, null=True)
+    # image = models.FileField(upload_to=path_and_rename, null=True , blank=True)
     title = models.CharField(max_length=100)
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, related_name='category', null=True)
     cost = models.IntegerField()
@@ -90,7 +90,12 @@ class ServiceModel(models.Model):
 
 
 class ImageModel(models.Model):
-    image = models.ImageField(upload_to="service_photos", null=True)
+    image = models.FileField(upload_to=path_and_rename, null=True , blank=True)
+    service = models.ForeignKey(ServiceModel, on_delete=models.SET_NULL, related_name='images', null=True)
+
+    def __str__(self):
+        return f"{self.image}"
+
 
 
 class ReviewModel(models.Model):
@@ -107,6 +112,9 @@ class ReviewModel(models.Model):
         ordering = ['-date_added']
 
 
+
+
+
 # image compression code
 
 def image_compressor(sender, **kwargs):
@@ -115,6 +123,6 @@ def image_compressor(sender, **kwargs):
             photo.save(kwargs["instance"].image.path, optimize=True, quality=50)
 
 
-post_save.connect(image_compressor, sender=ServiceModel)
+post_save.connect(image_compressor, sender=ImageModel)
 
 
