@@ -1,5 +1,5 @@
 import os.path
-from turtle import delay
+
 
 import requests
 
@@ -88,6 +88,13 @@ class ServiceModel(models.Model):
             image = None
         return image
 
+    # get all images of a service
+    def get_images(self):
+        images = []
+        for image in self.images.all():
+            images.append(image.image.url)
+        return images
+
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.title)
     #     super(ServiceModel, self).save(*args, **kwargs)
@@ -98,7 +105,7 @@ class ServiceModel(models.Model):
 
 class ImageModel(models.Model):
     image = models.FileField(upload_to=path_and_rename, null=True , blank=True)
-    service = models.ForeignKey(ServiceModel, on_delete=models.SET_NULL, related_name='images', null=True)
+    service = models.ForeignKey(ServiceModel, on_delete=models.SET_NULL, related_name='images', null=True, blank=True)
 
     def __str__(self):
         return f"{self.image}"

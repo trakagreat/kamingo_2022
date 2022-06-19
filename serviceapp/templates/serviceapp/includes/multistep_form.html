@@ -1,0 +1,35 @@
+ <div class="d-flex justify-content-center">
+        <p class="h5 lead ">Create new service</p>
+    </div>
+
+    <div class="tab">
+        {{ form.as_p }}
+    </div>
+    <div class="tab">
+        {% include 'serviceapp/includes/service_form_Images.html' %}
+    </div>
+
+    <div class="tab">
+        {% include 'serviceapp/service_form_description.html' %}
+    </div>
+
+    <div class="tab">Login Info:
+        {% include 'serviceapp/includes/address_form.html' %}
+    </div>
+
+    <div class="float-end">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button class="btn btn-outline-dark" type="button" id="prevBtn" onclick="nextPrev(-1)">Back </button>
+            <button class="btn btn-outline-primary" type="button" id="nextBtn" onclick="nextPrev(1)"> Next</button>
+        </div>
+    </div>
+
+
+    <div style="text-align:center;margin-top:4rem;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+    </div>
+
+

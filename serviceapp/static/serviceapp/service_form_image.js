@@ -1,60 +1,36 @@
-jQuery(document).ready(function () {
-    ImgUpload();
-  });
-  
-  function ImgUpload() {
-    var imgWrap = "";
-    var imgArray = [];
-  
-    $('.upload__inputfile').each(function () {
-      $(this).on('change', function (e) {
-        imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
-        var maxLength = $(this).attr('data-max_length');
-  
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        var iterator = 0;
-        filesArr.forEach(function (f, index) {
-  
-          if (!f.type.match('image.*')) {
-            return;
-          }
-  
-          if (imgArray.length > maxLength) {
-            return false
-          } else {
-            var len = 0;
-            for (var i = 0; i < imgArray.length; i++) {
-              if (imgArray[i] !== undefined) {
-                len++;
-              }
+window.onload = function () {
+    var fileUpload = document.getElementById("fileupload");
+    fileUpload.onchange = function () {
+        if (typeof (FileReader) != "undefined") {
+            var dvPreview = document.getElementById("dvPreview");
+            dvPreview.innerHTML = "";
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            for (var i = 0; i < fileUpload.files.length; i++) {
+                var file = fileUpload.files[i];
+                if (regex.test(file.name.toLowerCase())) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = document.createElement("IMG");
+                        img.height = "200";
+                        img.width = "200";
+                        img.src = e.target.result;
+                   //make image border radius to circle
+                        img.style.borderRadius = "2%";
+                   //make image class to rounded
+                        img.className = "img-thumbnail";
+                    //give image a margin
+                        img.style.margin = "0.5rem";
+                        dvPreview.appendChild(img);
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    alert(file.name + " is not a valid image file.");
+                    dvPreview.innerHTML = "";
+                    return false;
+                }
             }
-            if (len > maxLength) {
-              return false;
-            } else {
-              imgArray.push(f);
-  
-              var reader = new FileReader();
-              reader.onload = function (e) {
-                var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-                imgWrap.append(html);
-                iterator++;
-              }
-              reader.readAsDataURL(f);
-            }
-          }
-        });
-      });
-    });
-  
-    $('body').on('click', ".upload__img-close", function (e) {
-      var file = $(this).parent().data("file");
-      for (var i = 0; i < imgArray.length; i++) {
-        if (imgArray[i].name === file) {
-          imgArray.splice(i, 1);
-          break;
+        } else {
+            alert("This browser does not support HTML5 FileReader.");
         }
-      }
-      $(this).parent().parent().remove();
-    });
-  }
+    }
+};

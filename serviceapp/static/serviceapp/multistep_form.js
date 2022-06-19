@@ -13,10 +13,14 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
-    document.getElementById("nextBtn").onclick = function () {
-        document.getElementById("nextBtn").type = "Submit";
+    //set button type to submit
+    //onclick nextbtn, submit form
+    document.getElementById("nextBtn").onclick = function() {
+      document.getElementById("nextBtn").type = "submit";
     }
-    // document.getElementById("nextBtn").type = "submit";
+
+
+    
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }

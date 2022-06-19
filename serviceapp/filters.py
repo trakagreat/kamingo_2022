@@ -4,9 +4,19 @@ from .models import ServiceModel
 
 
 class ServiceFilter(django_filters.FilterSet):
+
     address__city = django_filters.CharFilter(label='City',lookup_expr='icontains')
     class Meta:
         model = ServiceModel
         fields = ['category','address__city']
+        url = 'serviceapp:front-page'
+
+
+        
+
+
+
+
+        
 
 
