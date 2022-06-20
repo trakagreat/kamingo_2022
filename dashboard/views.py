@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import UpdateView
-from .models import ServiceModel ,CategoryModel
+from .models import ServiceModel ,CategoryModel , ImageModel
 from django.views import View
 from django.contrib.auth.models import User
 from serviceapp.forms import AddressForm
@@ -26,6 +26,7 @@ class ServiceUpdateView(View):
         return render(request, 'dashboard/service_edit.html', context)
 
     def post(self, request, pk, pk_service):
+        images = request.FILES.getlist('images')
         service = ServiceModel.objects.get(pk=pk_service)
         service.title = request.POST.get('title')
         address = service.address
@@ -43,12 +44,21 @@ class ServiceUpdateView(View):
         service.service_provider_name = request.POST.get('service_provider_name')
         service.slugify()
         service.save()
-
+        
+        print(len(images))
+        if len(images) > 0:
+            images_delete = ImageModel.objects.filter(service=service)
+            for image in images_delete:
+                image.delete()
+            for image in images:
+                new_image = ImageModel(image=image , service=service)
+                new_image.save()
         service = ServiceModel.objects.get(pk=pk_service)
         context = {
             'pk': pk,
             'pk_service': pk_service,
             'service': service,
+
 
         }
         return HttpResponseRedirect(reverse('service_des_edit_url', kwargs={

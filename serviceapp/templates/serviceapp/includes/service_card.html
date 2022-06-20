@@ -1,79 +1,80 @@
-
-{% comment %} <div class="card m-1 shadow-sm" style="max-width: 540px;">
+<!-- <div class="card m-1 shadow-sm" style="max-width: 540px;">
     <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a>
-  <div class="row g-0">
-      <div class="container">
-    <div class="row">
-        <div class="col-4 " style="padding: 0.15rem; justify-content: left">
-                  <img style="width: 100%; height: 100%;" src="{{ service.image.url }}" class="img-fluid rounded" alt="...">
+    <div class="row g-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 " style="padding: 0.15rem; justify-content: left">
+                    <img style="width: 100%; height: 100%;" src="{{ service.image.url }}" class="img-fluid rounded"
+                        alt="...">
 
+                </div>
+                <div class="col-8 col-md-8">
+                    <div class="card-body">
+                        <h6 class="card-title text-truncate">{{ service.title | title }}</h6>
+
+                        <p class="card-text mb-0" style="color: green; font-weight: bold; "><i
+                                class="fas fa-rupee-sign"></i> {{ service.cost }}</p>
+                        <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class="fas fa-star"></i>
+                            {{ service.get_rating | floatformat:1 }}</p>
+                        <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-8 col-md-8">
-                 <div class="card-body">
-        <h6 class="card-title text-truncate">{{ service.title | title }}</h6>
 
-        <p class="card-text mb-0" style="color: green; font-weight: bold; "><i class="fas fa-rupee-sign"></i> {{ service.cost }}</p>
-        <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class= "fas fa-star"></i> {{ service.get_rating | floatformat:1 }}</p>
-                 <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
-                 </div>
+    </div>
+</div>  -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+</style>
+
+<div class="col-12 col-md-12 col-lg-4 mt-2">
+    <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a>
+    <div class="card border-light mb-4">
+        <a href="" class="position-relative">
+
+
+            <img src="{{ service.get_image}}" style="" class=" card-img-top rounded-xl p-2" alt="themesberg office"
+                width="100%" height="280rem"> </a>
+        <div class="card-body">
+
+            <h4 class="h5 card-title text-truncate" style="color: #35373c; font-family: 'Lato', sans-serif;">{{ service.title | title }}</h4>
+
+            <div class="d-flex my-4">
+                <i class="star fas fa-star text-warning" aria-hidden="true"></i>
+
+                </i> <span class="badge badge-pill badge-primary ml-2">
+                    {{ service.get_rating | floatformat:1 }}
+                </span>
+            </div>
+            <ul class="list-group mb-3">
+                <li class="list-group-item small p-0">
+                    <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">
+
+                    </span>{{ service.address.city}} , {{ service.address.locality }}
+                </li>
+                <li class="list-group-item small p-0">
+                    <span class="fas fa-bullseye mr-2" aria-hidden="true">
+
+                    </span>{{ service.address.pin_code }}
+                </li>
+
+            </ul>
+        </div>
+        <div class="card-footer bg-soft border-top">
+            <div class="d-flex justify-content-between">
+                <div class="col pl-0">
+                    <span class="text-muted font-small d-block mb-2">
+                        cost
+                    </span>
+                    <span class="h5 text-dark font-weight-bold">
+                        <i class="fas fa-rupee-sign"></i>
+                        {{ service.cost }}
+                    </span>
+
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
-
-  </div>
-</div> {% endcomment %}
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-    </style>
-
-<div class="col-12 col-md-6 col-lg-4 mt-2">
-  <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a>
-  <div class="card border-light mb-4">
-      <a href="" class="position-relative">
-        
-
-          <img src="{{ service.get_image}}" style="" class=" card-img-top rounded-xl p-2" alt="themesberg office" width="100%" height="280rem"> </a>
-          <div class="card-body">
-            
-              <h4 class="h5 card-title text-truncate" style="color: #35373c; font-family: 'Lato', sans-serif;">{{ service.title | title }}</h4>
-           
-          <div class="d-flex my-4">
-              <i class="star fas fa-star text-warning" aria-hidden="true"></i>
-
-              </i> <span class="badge badge-pill badge-primary ml-2">
-                {{ service.get_rating | floatformat:1 }}
-              </span>
-          </div><ul class="list-group mb-3">
-              <li class="list-group-item small p-0">
-                  <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">
-
-                  </span>{{ service.address.city}} , {{ service.address.locality }} </li>
-                  <li class="list-group-item small p-0">
-                      <span class="fas fa-bullseye mr-2" aria-hidden="true">
-
-                      </span>{{ service.address.pin_code }}
-                    </li>
-                
-                  </ul>
-              </div>
-              <div class="card-footer bg-soft border-top">
-                  <div class="d-flex justify-content-between">
-                      <div class="col pl-0">
-                          <span class="text-muted font-small d-block mb-2">
-                             cost
-                          </span>
-                           <span class="h5 text-dark font-weight-bold">
-                            <i class="fas fa-rupee-sign"></i>
-                            {{ service.cost }}
-                              </span>
-                              
-                          </div>
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-
-      
