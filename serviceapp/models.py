@@ -1,6 +1,7 @@
 import os.path
 
 
+
 import requests
 
 import random
@@ -12,6 +13,9 @@ from uuid import uuid4
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+
+from kamingo.settings import STATIC_URL
+from .static import serviceapp
 
 
 # file renaming function ----------------
@@ -93,7 +97,11 @@ class ServiceModel(models.Model):
         images = []
         for image in self.images.all():
             images.append(image.image.url)
-        return images
+        if len(images) == 0:
+            images = None
+            return images
+        else:
+            return images
 
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.title)
@@ -134,7 +142,7 @@ class ReviewModel(models.Model):
 def image_compressor(sender, **kwargs):
     if kwargs["created"]:
         with Image.open(kwargs["instance"].image.path) as photo:
-            photo.save(kwargs["instance"].image.path, optimize=True, quality=50)
+            photo.save(kwargs["instance"].image.path, optimize=True, quality=25)
 
 
 post_save.connect(image_compressor, sender=ImageModel)
