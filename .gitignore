@@ -1,1 +1,6 @@
 /venv
+kamingo/settings.py
+serviceapp/migrations/0002_categorymodel_id_alter_categorymodel_name_and_more.py
+serviceapp/migrations/__pycache__/0002_categorymodel_id_alter_categorymodel_name_and_more.cpython-39.pyc
+kamingo/settings.py
+serviceapp/__pycache__/models.cpython-39.pyc
