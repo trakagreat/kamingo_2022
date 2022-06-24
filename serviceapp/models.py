@@ -10,7 +10,7 @@ from django.db.models.signals import post_save
 from PIL import Image
 from phonenumber_field.modelfields import PhoneNumberField
 from uuid import uuid4
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator , MinLengthValidator
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
@@ -31,7 +31,7 @@ class Address(models.Model):
     address_line1 = models.CharField(max_length=100, null=True)
     address_line2 = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True, verbose_name='City')
-    pin_code = models.CharField(max_length=6, null=True, min_length=6)
+    pin_code = models.CharField(max_length=6, null=True, validators=[MinLengthValidator(6)])
     locality = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return f"{self.address_line1}, {self.pin_code}, {self.city}"
@@ -68,7 +68,7 @@ class ServiceModel(models.Model):
     category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, related_name='category', null=True)
     cost = models.IntegerField()
     service_provider_name = models.CharField(max_length=100)
-    contact = models.CharField(max_length=10, null=True, min_length=10)
+    contact = models.CharField(max_length=10, null=True, validators=[MinLengthValidator(10)])
     address = models.ForeignKey(Address, on_delete=models.SET_NULL, related_name='address', null=True)
     slug = models.SlugField(unique=True, db_index=True, null=True, blank=True)
     description = models.CharField(max_length=600, null=True, blank=True)
