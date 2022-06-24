@@ -26,7 +26,7 @@ class ServiceForm(ModelForm):
             'cost': forms.NumberInput(attrs={'class': 'form-control'}),
             'contact': forms.TextInput(attrs={'class': 'form-control',
                                                   'type': 'tel',
-                                                    }),
+                                                  'pattern':'^\d{10}$'  }),
             'address': forms.TextInput(attrs={'class': 'form-control'}),
             # 'image': forms.FileInput(attrs={'class': 'form-control', 'multiple':""}),
             'service_provider_name': forms.TextInput(attrs={'class': 'form-control'}),
