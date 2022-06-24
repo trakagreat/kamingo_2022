@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import django_heroku
-from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,7 +41,7 @@ INSTALLED_APPS = [
     'bootstrap5',
 
     'star_ratings',
-    'django_heroku',
+  
 
     'address',
     'jquery',
@@ -199,7 +198,7 @@ ACCOUNT_SIGNUP_REDIRECT_URL = "/"
 GOOGLE_API_KEY = 'AIzaSyBxlBzvDiUW5hEUGVwE6jSkLYy7LjwTwFI'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
