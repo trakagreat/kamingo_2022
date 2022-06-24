@@ -1,0 +1,92 @@
+
+{%load static%}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid ">
+        <img style="margin-right: 0.5rem;" width="25rem" height="50rem" src="{% static 'serviceapp/kamingo_icon.png' %}" alt="">
+      <a class="navbar-brand" href="/">KAMINGO</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="width: fit-content;"
+
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="user/register">Contact Us</a>
+          </li>
+          {% if user.is_authenticated %}
+               <li class="nav-item">
+            <a class="btn btn-outline-primary" href=" {% if user.is_authenticated %}
+            {% url 'service_form_url' %}
+            {% else %}
+{#              {% url  %}#}
+            {% endif %}
+
+              ">+ create service</a>
+          </li>
+          {% else %}
+          {% endif %}
+        <li>
+          {% if user.is_authenticated %}
+          <a class="btn btn-success" href="{% url 'dashboard_url' user.pk %}">Dashboard</a>
+          {% else %}
+          {% endif %}
+        </li>
+
+        </ul>
+
+        <form class="d-flex">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="{% url 'account_login' %}"
+                ><button type="button" class="btn btn-outline-primary">
+                  Login
+                </button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_signup' %}"
+                ><button type="button" class="btn btn-outline-info">
+                  Register
+                </button>
+              </a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <h3 style="color: aliceblue">{{ user.username| title }}</h3>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_logout' %}"
+                ><button  type="button" class="btn btn-outline-info w-100">
+                  Logout
+                </button>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button> -->
+        </form>
+      </div>
+    </div>
+  </nav>
+
