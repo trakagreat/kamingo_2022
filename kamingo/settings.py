@@ -14,7 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +25,7 @@ SECRET_KEY = 'django-insecure-@*r1%m3!=7u)^vd=&4$fupjzed*9)g1(==8mt=_*qf_-cabjgs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.17', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.43.17', '127.0.0.1', 'kamingo.in','www.kamingo.in']
 
 # Application definition
 
@@ -41,7 +40,8 @@ INSTALLED_APPS = [
     'bootstrap5',
 
     'star_ratings',
-  
+
+
     'jquery',
 
     'django_filters',
@@ -94,23 +94,24 @@ WSGI_APPLICATION = 'kamingo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-#
 # DATABASES = {
 #     'default': {
-#         "ENGINE": 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'dblt23kn2uvssq',
-#         "USER": 'noyyyirhjwijxe',
-#         "PASSWORD": "df23380ae30dfc04ecfd1e8d85552a2475587b7ebd0991fa5fa5f33bbeab93b6",
-#         'HOST': 'ec2-3-212-143-188.compute-1.amazonaws.com',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+#
+DATABASES = {
+    'default': {
+        "ENGINE": 'mysql.connector.django',
+        'NAME': 'kamingoi_admin',
+        "USER": 'kamingoi_admin',
+        "PASSWORD": "rajvendra_rahi",
+        'HOST': 'kamingo.in',
+        'PORT': '3306',
+    }
+}
+
 #
 # import dj_database_url
 #
@@ -121,22 +122,20 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': {
-            'min_length': 6,
-        }
     },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -188,18 +187,23 @@ SOCIALACCOUNT_PROVIDERS = {
 
 }
 
-SITE_ID = 3
+
+# account configuration
+
+
+SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_SIGNUP_REDIRECT_URL = "/"
+
+
 
 GOOGLE_API_KEY = 'AIzaSyBxlBzvDiUW5hEUGVwE6jSkLYy7LjwTwFI'
+
+
+
 
 # Activate Django-Heroku.
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_EMAIL_VERIFICATION = "none"
