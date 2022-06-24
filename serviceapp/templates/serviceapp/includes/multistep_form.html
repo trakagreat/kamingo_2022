@@ -5,14 +5,14 @@
     <div class="tab">
 
         {{ form.as_p }}
-        <div class="m-3">
+        {% comment %} <div class="m-3">
             <label for="" class="form-label">Contact</label>
             <input class="form-control" type="tel" name="contact" value="{{ service.contact }}" required
-                pattern="^\d{10}$">
+                pattern="^\d{10}$" validate>
             <div class="invalid-feedback">
                 Please provide a valid phone number.
             </div>
-        </div>
+        </div> {% endcomment %}
 
 
 

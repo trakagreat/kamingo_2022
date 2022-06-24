@@ -34,3 +34,4 @@ serviceapp/__pycache__/urls.cpython-310.pyc
 serviceapp/__pycache__/views.cpython-39.pyc
 serviceapp/__pycache__/views.cpython-310.pyc
 kamingo/__pycache__/settings.cpython-39.pyc
+db.sqlite3
