@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'bootstrap5',
+
+    'star_ratings',
   
     'jquery',
 
