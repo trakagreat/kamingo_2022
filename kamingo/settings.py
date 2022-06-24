@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'bootstrap5',
   
-    'address',
     'jquery',
 
     'django_filters',
