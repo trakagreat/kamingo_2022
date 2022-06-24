@@ -27,7 +27,7 @@ dashboard
         <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class= "fas fa-star"></i> {{ service.get_rating | floatformat:1 }}</p>
         <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
         <a class="btn btn-primary" href="{% url 'service_edit_url' user.pk service.pk %}"> edit </a>
-        
+        <a class="btn btn-primary" href="{% url 'service-detail-page' service.slug %}  ">View</a>
 {% comment %} delete popup {% endcomment %}
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">

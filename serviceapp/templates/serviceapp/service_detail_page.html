@@ -74,9 +74,14 @@
                 </div>
                 <div class="row text-right">
                     <div class="col">
+                        
                         <h3 class="details-headings">Category</h3>
+                        <div class="float-end">
+                            <a class="btn btn-success" href="tel:{{ service.contact }}">Call</a>
+                        </div>
                         <p  class="text-muted" style=""><i class="fa fa-wrench" aria-hidden="true"></i>
                              {{ service.category.name | title }}</p>
+                             
                     </div>
                 </div>
             </div>
