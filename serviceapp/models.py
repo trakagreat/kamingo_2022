@@ -56,7 +56,7 @@ class Address(models.Model):
 
 
 class CategoryModel(models.Model):
-    name = models.CharField(max_length=50, primary_key=True, unique=True)
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
