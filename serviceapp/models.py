@@ -65,7 +65,7 @@ class CategoryModel(models.Model):
 class ServiceModel(models.Model):
     # image = models.FileField(upload_to=path_and_rename, null=True , blank=True)
     title = models.CharField(max_length=100)
-    category = models.ForeignKey(CategoryModel, on_delete=models.PROTECT, related_name='category', null=True)
+    category = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, related_name='category', null=True)
     cost = models.IntegerField()
     service_provider_name = models.CharField(max_length=100)
     contact = PhoneNumberField()
