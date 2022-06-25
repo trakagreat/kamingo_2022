@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render, reverse
 from .forms import ServiceForm, AddressForm
-from .models import ServiceModel, ReviewModel, CategoryModel, ImageModel
+from .models import ServiceModel, ReviewModel, CategoryModel, ImageModel, Address
 from django.views import View
 from django.views.generic import ListView
 from django.http import HttpResponseRedirect, HttpResponse
@@ -39,39 +39,42 @@ class ServiceFormDesView(View):
 
 class ServiceFormView(View):
     def get(self, request):
-        service_form = ServiceForm()
-        address_form = AddressForm()
+        categories = CategoryModel.objects.all()
         return render(request, 'serviceapp/service_form.html', {
-            "form": service_form,
-            "address_form": address_form,
             'cities': cities,
+            'categories':categories,
         })
 
     def post(self, request):
-        service = ServiceForm(request.POST)
-        address = AddressForm(request.POST)
-        if service.is_valid():          
-            new_service = service.save(commit=False)
-            new_address = address.save(commit=False)
-            new_address.city = request.POST.get('city')
-            new_address.save()
-            new_service.address = new_address
-            new_service.user = request.user
-            new_service.slugify()
-            new_service.description = request.POST.get('des')
-            new_service.save()
-            images = request.FILES.getlist('images')
-            for image in images:
-                new_image = ImageModel(image=image, service=new_service)
-                new_image.save()
-    
-            return HttpResponseRedirect(reverse('front-page'))
-        else:
-            return render(request, 'serviceapp/service_form.html', {
-                "form": service,
-                'address_form': address,
-                'cities': cities,
-            })
+        service = ServiceModel()
+        service.title = request.POST.get('title')
+        address = Address()
+        address.address_line1 = request.POST.get('address1')
+        address.address_line2 = request.POST.get('address2')
+        address.pin_code = request.POST.get('pincode')
+        address.city = request.POST.get('city')
+        address.save()
+        service.address = address
+        service.cost = request.POST.get('cost')
+        service.contact = request.POST.get('contact')
+
+        category_name = request.POST.get('category')
+        print(category_name)
+        try:
+            category = CategoryModel.objects.get(name=category_name)
+        except:
+            category = None
+        service.category = category
+        service.service_provider_name = request.POST.get('service_provider_name')
+        service.slugify()
+        service.save()
+        images = request.FILES.getlist('images')
+        for image in images:
+            new_image = ImageModel(image=image, service=service)
+            new_image.save()
+
+        return HttpResponseRedirect(reverse('front-page'))
+       
 
 class ServiceDetailView(View):
     def get(self, request, slug):

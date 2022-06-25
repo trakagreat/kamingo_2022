@@ -16,13 +16,13 @@ fill the form please
 
 
 {% block body %}
-<form id="regForm" method="POST" action="{% url 'service_form_url' %}" enctype="multipart/form-data" novalidate>
+<form id="regForm" method="POST" class="needs-validation" action="{% url 'service_form_url' %}" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
 
 <!-- new multistep_form -->
 
 
-{% include 'serviceapp/includes/multistep_form.html' %}
+    {% include 'serviceapp/includes/multistep_form.html' %}
 
 
 </form>

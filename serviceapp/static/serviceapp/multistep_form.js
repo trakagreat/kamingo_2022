@@ -1,6 +1,12 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
+
+
+
+
+
+
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
@@ -13,14 +19,60 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
-    //set button type to submit
-    //onclick nextbtn, submit form
-    document.getElementById("nextBtn").onclick = function() {
-      document.getElementById("nextBtn").type = "submit";
+    var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...
+      if (y[i].value == "") {
+        // add an "invalid" class to the field:
+        y[i].className += " invalid";
+        // and set the current valid status to false:
+        valid = false;
+        console.log("invalid");
+
+
+      }
+      else{
+        
+        valid = true;
+      }
+    }
+    // If the valid status is true, mark the step as finished and valid:
+    
+      
+        
+        document.getElementById("nextBtn").onclick = function () {
+          var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+      // If a field is empty...
+      if (y[i].value == "") {
+        // add an "invalid" class to the field:
+        y[i].className += " invalid";
+        // and set the current valid status to false:
+        valid = false;
+        console.log("invalid");
+
+
+      }
+      else{
+        
+        valid = true;
+      }
+    }
+          if (valid) {
+          document.getElementById("nextBtn").type = "submit";
+
+        
+      }
     }
 
+    return valid;
 
-    
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
@@ -48,6 +100,20 @@ function nextPrev(n) {
 }
 
 function validateForm() {
+  var element = document.getElementById("typePhone").value;
+  if (element.length != 10) {
+    // alert("must enter a valid number")
+    // document.getElementById("typePhone").className += " invalid";
+    document.getElementById("typePhone").classList.add("invalid");
+    document.getElementById("contact-alert").classList.remove("invisible");
+    return false
+  }
+  if (isNaN(element)) {
+    // document.getElementById("typePhone").setCustomValidity("Invalid field.");
+    document.getElementById("typePhone").classList.add("invalid");
+    document.getElementById("contact-alert").classList.remove("invisible");
+    return false;
+  }
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
@@ -60,12 +126,17 @@ function validateForm() {
       y[i].className += " invalid";
       // and set the current valid status to false:
       valid = false;
+
+
     }
   }
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
+    if (element.length == 10) {
+      document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
   }
+
   return valid; // return the valid status
 }
 
@@ -78,3 +149,39 @@ function fixStepIndicator(n) {
   //... and adds the "active" class to the current step:
   x[n].className += " active";
 }
+
+document.getElementById("typePhone").onchange = function () {
+
+  var element = document.getElementById("typePhone").value;
+  console.log(element.length);
+  if (element.length == 0) {
+    document.getElementById("contact-alert").classList.add("invisible");
+    return false
+  }
+  if (element.length == 10) {
+
+    document.getElementById("typePhone").classList.remove("invalid");
+    document.getElementById("contact-alert").classList.add("invisible");
+    return false
+
+  }
+  if (element.length != 10) {
+    document.getElementById("typePhone").classList.add("invalid");
+    document.getElementById("contact-alert").classList.remove("invisible");
+    return false
+  }
+
+
+  if (isNaN(element)) {
+
+    // document.getElementById("typePhone").setCustomValidity("Invalid field.");
+    document.getElementById("typePhone").classList.add("invalid");
+
+  }
+  if (!isNaN(element)) {
+    document.getElementById("typePhone").classList.remove("invalid");
+
+  }
+
+
+};

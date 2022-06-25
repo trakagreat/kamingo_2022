@@ -9,10 +9,14 @@ class AddressForm(ModelForm):
         fields = '__all__'
         exclude = ('city',)
         widgets = {
-            'address_line1': forms.TextInput(attrs={'class': 'form-control'}),
-            'address_line2': forms.TextInput(attrs={'class': 'form-control'}),
-            'pin_code': forms.TextInput(attrs={'class': 'form-control'}),
-            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'address_line1': forms.TextInput(attrs={'class': 'form-control',
+            'required':''}),
+            'address_line2': forms.TextInput(attrs={'class': 'form-control',
+            'required':'',}),
+            'pin_code': forms.TextInput(attrs={'class': 'form-control',
+            'required':'',}),
+            'city': forms.TextInput(attrs={'class': 'form-control',
+            'required':'',}),
         }
 
 
