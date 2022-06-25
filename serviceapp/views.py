@@ -7,6 +7,7 @@ from django.views.generic import ListView
 from django.http import HttpResponseRedirect, HttpResponse
 from .filters import ServiceFilter
 from .data.citieslist import cities
+from django.contrib.auth.models import User
 
 
 
@@ -57,6 +58,7 @@ class ServiceFormView(View):
         service.address = address
         service.cost = request.POST.get('cost')
         service.contact = request.POST.get('contact')
+        service.user = request.user
 
         category_name = request.POST.get('category')
         print(category_name)
