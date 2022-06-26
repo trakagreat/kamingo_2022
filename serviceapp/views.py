@@ -58,6 +58,7 @@ class ServiceFormView(View):
         service.address = address
         service.cost = request.POST.get('cost')
         service.contact = request.POST.get('contact')
+        service.description = request.POST.get('des')
         service.user = request.user
 
         category_name = request.POST.get('category')
