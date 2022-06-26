@@ -13,7 +13,9 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 # Create your views here.
-
+class HomePageView(View):
+    def get(self , request):
+        return render(request , 'serviceapp/home.html')
 
 class FrontPageView(View):
     def get(self,request):
@@ -133,4 +135,11 @@ class ServiceImageUploadView(View):
         service = ServiceModel.objects.get(slug=request.POST.get('slug'))
         service.image = image
         service.save()
-        
+
+
+
+
+class PrivcayPolicyView(View):
+    def get(self, request):
+
+        return render(request, 'serviceapp/privacy_policy.html')
