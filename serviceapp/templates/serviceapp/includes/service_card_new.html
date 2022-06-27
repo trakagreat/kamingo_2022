@@ -1,8 +1,8 @@
 {% load static %}
-
+<div class="col-md-10 ">
 <div class="row m-1 p-2 bg-white border rounded">
     {% comment %} <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a> {% endcomment %}
-    <div class="col-md-3 mt-1 border" style="height: 12rem;">
+    <div class="col-md-3 mt-1 border" style="height: 12rem; background-color: #f9f9f9;">
         <img style=" object-fit: scale-down; height: inherit;"
            
         {% if service.get_image %}
@@ -11,13 +11,13 @@
         src="{% static 'serviceapp/default_img.png' %}"
         {% endif %}
        
-        class=" card-img-top rounded-xl p-2" alt="themesberg office"
+        class=" card-img-top rounded-xl " alt="themesberg office"
             width="100%" height="280rem">
         </div>
     <div class="col-md-6 mt-1">
         <h5>{{ service.title | title }}</h5>
         <div class="d-flex flex-row">
-            <div class="ratings mr-2"><i class="fa fa-star"></i>
+            <div class="ratings mr-2"><i class="fa fa-star" style="color: rgb(0,113,188) ;"></i>
                     </div><span>{{ service.get_rating | floatformat:1 }}</span>
         </div>
         <ul class="list-group mb-1">
@@ -48,4 +48,5 @@
                 type="button"  href="tel:{{ service.contact }}" >Call</button>
                 <a class="btn btn-outline-primary btn-sm mt-2" type="button" href="{% url 'service-detail-page' service.slug %}  ">View Details</a></div>
     </div>
+</div>
 </div>
