@@ -1,8 +1,8 @@
 {% load static %}
 
-<div class="row m-2 p-2 bg-white border rounded">
+<div class="row m-1 p-2 bg-white border rounded">
     {% comment %} <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a> {% endcomment %}
-    <div class="col-md-3 mt-1" style="height: 12rem;">
+    <div class="col-md-3 mt-1 border" style="height: 12rem;">
         <img style=" object-fit: scale-down; height: inherit;"
            
         {% if service.get_image %}
