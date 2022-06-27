@@ -1,0 +1,46 @@
+{% load static %}
+
+<div class="row p-2 bg-white border rounded">
+    {% comment %} <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a> {% endcomment %}
+    <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
+        {% if service.get_image %}
+        src="{{ service.get_image}}"
+       {% else %}
+       src="{% static 'serviceapp/default_img.png' %}"
+       {% endif %}
+            ></div>
+    <div class="col-md-6 mt-1">
+        <h5>{{ service.title | title }}</h5>
+        <div class="d-flex flex-row">
+            <div class="ratings mr-2"><i class="fa fa-star"></i>
+                    </div><span>{{ service.get_rating | floatformat:1 }}</span>
+        </div>
+        <ul class="list-group mb-1">
+            <li class="list-group-item small p-0">
+                <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">
+
+                </span>{{ service.address.city}} , {{ service.address.locality }}
+            </li>
+            <li class="list-group-item small p-0">
+                <span class="fas fa-bullseye mr-2" aria-hidden="true">
+
+                </span>{{ service.address.pin_code }}
+            </li>
+
+        </ul>
+        <p class="text-justify text-truncate para mb-0">{% if service.description  %}
+            {{service.description}}
+        {% else %}
+        {% endif %}No Description<br><br></p>
+    </div>
+    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+        <div class="d-flex flex-row align-items-center">
+            <h4 class="mr-1"><i class="fas fa-rupee-sign"></i>
+                {{ service.cost }}</h4>
+        </div>
+        <!-- <h6 class="text-success">Free shipping</h6> -->
+        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm"
+                type="button"  href="tel:{{ service.contact }}" >Call</button>
+                <a class="btn btn-outline-primary btn-sm mt-2" type="button" href="{% url 'service-detail-page' service.slug %}  ">View Details</a></div>
+    </div>
+</div>
