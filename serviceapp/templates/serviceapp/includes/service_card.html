@@ -3,7 +3,144 @@
     @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 </style>
 
-<div class="col-12 col-md-6 col-lg-4 mt-2">
+
+
+
+
+        <div class="col-md-4 m-1">
+            <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a>
+            <div class="row shadow border rounded " style="background-color: white;">
+                <div class="col-4 col-md-12 text-center" style="padding: 0.5rem;">
+                    <img style=" object-fit: scale-down; height: inherit;"
+           
+            {% if service.get_image %}
+             src="{{ service.get_image}}"
+            {% else %}
+            src="{% static 'serviceapp/default_img.png' %}"
+            {% endif %}
+           
+            class=" card-img-top rounded-xl p-2" alt="themesberg office"
+                width="100%" height="280rem">
+                </div>
+                <div class="col-5 col-md-12">
+                    <h4 class="h5 card-title text-truncate " style="color: #35373c; font-family: 'Lato', sans-serif;">{{ service.title | title }}</h4>
+                    <i class="star fas fa-star text-warning" aria-hidden="true">
+                    </i> 
+                    <span class="badge badge-pill badge-primary ml-2">
+                        {{ service.get_rating | floatformat:1 }}
+                    </span>          
+                    <ul class="list-group mb-1">
+                        <li class="list-group-item small p-0">
+                           <i class="fas fa-map-marker-alt mr-2" ></i><p class="m-0 text-truncate inline "  style="display: contents;">{{ service.address.city}} , {{ service.address.locality }}</p>
+                        </li>
+                        <li class="list-group-item small p-0">
+                            <span class="fas fa-bullseye mr-2" aria-hidden="true">
+        
+                            </span>{{ service.address.pin_code }}
+                        </li>
+        
+                    </ul>   
+                </div>
+                <div class="col-3 col-md-12 p-1" style="background-color:#f3f3f3;">
+                    <div class="d-flex justify-content-between bg-soft"  >
+                        <div class="col justify-content-center">
+                            <span class="text-muted font-small d-block ">
+                                cost
+                            </span>
+                            <span class="h5 text-dark font-weight-bold">
+                                <i class="fas fa-rupee-sign"></i>
+                                {{ service.cost }}
+                            </span>
+        
+                        </div>
+        
+                    </div>
+                 
+
+                </div>
+            </div>
+        </div>
+        
+
+<!-- 
+ <div class="card m-1" style="max-width: 540px; height: 10rem;">
+   
+
+   
+    <div class="row no-gutters " style="height: inherit;">
+      <div class="col-4" style="height: inherit ;">
+        <div style="height:inherit;">
+            <img style=" object-fit: scale-down; height: inherit;"
+           
+            {% if service.get_image %}
+             src="{{ service.get_image}}"
+            {% else %}
+            src="{% static 'serviceapp/default_img.png' %}"
+            {% endif %}
+           
+            class=" card-img-top rounded-xl p-2" alt="themesberg office"
+                width="100%" height="280rem">
+        </div>
+        
+      </div>
+      <div class="col-8" style="height: inherit ;">
+        <div class="card-body" style="height: inherit ;">
+            <h4 class="h5 card-title text-truncate " style="color: #35373c; font-family: 'Lato', sans-serif;">{{ service.title | title }}</h4>
+            <i class="star fas fa-star text-warning" aria-hidden="true">
+            </i> 
+            <span class="badge badge-pill badge-primary ml-2">
+                {{ service.get_rating | floatformat:1 }}
+            </span>          
+            <ul class="list-group mb-1">
+                <li class="list-group-item small p-0">
+                    <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">
+
+                    </span>{{ service.address.city}} , {{ service.address.locality }}
+                </li>
+                <li class="list-group-item small p-0">
+                    <span class="fas fa-bullseye mr-2" aria-hidden="true">
+
+                    </span>{{ service.address.pin_code }}
+                </li>
+
+            </ul>   
+            <div class="card-footer bg-soft border-top">
+                <div class="d-flex justify-content-between">
+                    <div class="col pl-0">
+                        <span class="text-muted font-small d-block ">
+                            cost
+                        </span>
+                        <span class="h5 text-dark font-weight-bold">
+                            <i class="fas fa-rupee-sign"></i>
+                            {{ service.cost }}
+                        </span>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-12 col-md-6 col-lg-4 mt-2">
+    
     <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a>
     <div class="card border-light ">
         <a href="" class="position-relative">
@@ -60,4 +197,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
