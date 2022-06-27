@@ -76,20 +76,15 @@
   
         <div class="row justify-content-center " style="width: 100%">
 
-           
+            {% for service in filter.qs %}
+
+            {% include 'serviceapp/includes/service_card.html' %}
+    
+            {% endfor %}
         </div>
 </div>
 
-<div class="container">
-    <div class="row justify-content-center">
-        {% for service in filter.qs %}
 
-        {% include 'serviceapp/includes/service_card.html' %}
-
-        {% endfor %}
-    </div>
-
-</div>
 
 
 
