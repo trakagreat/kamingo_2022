@@ -7,8 +7,8 @@ from serviceapp.models import ServiceModel
 
 urlpatterns = [
     # url for filter
-    # path('', views.HomePageView.as_view(), name='home-page'),
-    path('', views.FrontPageView.as_view(), name='front-page'),
+    path('', views.HomePageView.as_view(), name='home-page'),
+    path('service', views.FrontPageView.as_view(), name='front-page'),
     path('service-form', views.ServiceFormView.as_view(), name='service_form_url'),
     path('service-form', views.PleaseLoginView.as_view(), name='login_first_url'),
     path('service-form/<slug:slug>/description', views.ServiceFormDesView.as_view(), name='service_form_des_url'),
