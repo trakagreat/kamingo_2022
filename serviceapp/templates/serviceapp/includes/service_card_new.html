@@ -45,9 +45,11 @@
                 {{ service.cost }}</h4>
         </div>
         <!-- <h6 class="text-success">Free shipping</h6> -->
-        <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm"
-                type="button"  href="tel:{{ service.contact }}" >Call</button>
-                <a class="btn btn-outline-primary btn-sm mt-2" type="button" href="{% url 'service-detail-page' service.slug %}  ">View Details</a></div>
+        <div class="d-flex flex-column mt-4">
+            <button class="btn btn-primary btn-sm" type="button"  href="tel:{{ service.contact }}" >Call</button>
+            <a class="btn btn-outline-primary btn-sm mt-2" type="button" href="{% url 'service-detail-page' service.slug %}">View Details</a>
+            {% include 'serviceapp/includes/share_button.html' %}
+            </div>
     </div>
 </div>
 </div>
