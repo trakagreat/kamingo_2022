@@ -1,7 +1,7 @@
 const shareData = {
     title: 'Founde a service',
     text: 'Check out this very Good service you can use',
-    url: "{% url 'service-detail-page' service.slug %}"
+    url: "kamingo.in/{{service.title}}"
   }
   
   const btn = document.querySelector('.share');
