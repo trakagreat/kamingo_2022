@@ -19,17 +19,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="nav-item py-2">
             <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item py-2">
             <a class="nav-link" aria-current="page" href="/service">Services</a>
           </li>
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link" href="user/register">Contact Us</a>
-          </li>
+          </li> {% endcomment %}
           {% if user.is_authenticated %}
-               <li class="nav-item">
+               <li class="nav-item mx-2 py-2">
             <a class="btn btn-outline-primary" href=" {% if user.is_authenticated %}
             {% url 'service_form_url' %}
             {% else %}
@@ -40,7 +40,7 @@
           </li>
           {% else %}
           {% endif %}
-        <li>
+        <li class="nav-item mx-2 py-2" >
           {% if user.is_authenticated %}
           <a class="btn btn-success" href="{% url 'dashboard_url' user.pk %}">Dashboard</a>
           {% else %}
@@ -49,7 +49,7 @@
 
         </ul>
 
-        <form class="d-flex">
+        <form class="d-flex m-2">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             {% if not user.is_authenticated %}
             <li class="nav-item">
@@ -70,15 +70,39 @@
               </a>
             </li>
             {% else %}
-            <li class="nav-item">
-              <h3 style="color: aliceblue">{{ user.username| title }}</h3>
+            <li class="nav-item " style="" >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}"
-                ><button  type="button" class="btn btn-outline-info w-100">
-                  Logout
-                </button>
-              </a>
+              <div class="dropdown mr-4">
+               
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                   {{ user.username| title }}
+                  </button>
+                
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {% if user.is_authenticated %}
+                  <li class="">
+                    <a class="dropdown-item" href=" {% if user.is_authenticated %}
+                      {% url 'service_form_url' %}
+                      {% else %}
+                    {#   {% url  %}#}
+                      {% endif %}
+                    ">Create Service</a>
+                  </li>
+                    {% else %}
+                    {% endif %}
+                    <li class="" >
+                      {% if user.is_authenticated %}
+                      <a class="dropdown-item" href="{% url 'dashboard_url' user.pk %}">Dashboard</a>
+                      {% else %}
+                      {% endif %}
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+
+                </ul>
+              </div>
+              
+             
             </li>
             {% endif %}
           </ul>
