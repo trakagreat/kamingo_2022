@@ -1,8 +1,12 @@
 {% load static %}
 <div class="col-md-10 ">
 <div class="row m-1 p-2 bg-white border rounded">
+   
+
     {% comment %} <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a> {% endcomment %}
     <div class="col-md-3 mt-1 border" style="height: 12rem; background-color: #f9f9f9;">
+        <a href="{% url 'service-detail-page' service.slug %}" class="stretched-link"></a>
+
         <img style=" object-fit: scale-down; height: inherit;"
            
         {% if service.get_image %}
@@ -13,7 +17,9 @@
        
         class=" card-img-top rounded-xl " alt="themesberg office"
             width="100%" height="280rem">
+       
         </div>
+        
     <div class="col-md-6 mt-1">
         <h5>{{ service.title | title }}</h5>
         <div class="d-flex flex-row">
