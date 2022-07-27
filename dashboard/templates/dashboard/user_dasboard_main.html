@@ -22,12 +22,9 @@ dashboard
               <div class="card-body">
                 <h6 class="card-title text-truncate">{{ service.title | title }}</h6>
 
-                <p class="card-text mb-0" style="color: green; font-weight: bold; "><i class="fas fa-rupee-sign"></i> {{
-                  service.cost }}</p>
-                <p class="card-text mb-0" style="color: limegreen; font-weight: bold; "><i class="fa fa-phone"></i> {{
-                  service.contact}}</p>
-                <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class="fas fa-star"></i> {{
-                  service.get_rating | floatformat:1 }}</p>
+                <p class="card-text mb-0" style="color: green; font-weight: bold; "><i class="fas fa-rupee-sign"></i> {{service.cost }}</p>
+                <p class="card-text mb-0" style="color: limegreen; font-weight: bold; "><i class="fa fa-phone"></i> {{service.contact}}</p>
+                <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class="fas fa-star"></i> {{service.get_rating | floatformat:1 }}</p>
                 <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
                 <a class="btn btn-primary" href="{% url 'service_edit_url' user.pk service.pk %}"> edit </a>
                 <a class="btn btn-primary" href="{% url 'service-detail-page' service.slug %}  ">View</a>
