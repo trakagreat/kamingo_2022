@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
 dashboard
 {% endblock %}
@@ -9,66 +9,91 @@ dashboard
 
   <div class="row justify-content-center " style="width: 100%">
     {% for service in services %}
-
-    <div class="card m-1 shadow-sm" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="container">
-          <div class="row">
-            <div class="col-4 " style="padding: 0.15rem; justify-content: left">
-              <img style="width: 100%; height: 100%;" src="{{ service.get_image }}" class="img-fluid rounded" alt="...">
-
-            </div>
-            <div class="col-8 col-md-8">
-              <div class="card-body">
-                <h6 class="card-title text-truncate">{{ service.title | title }}</h6>
-
-                <p class="card-text mb-0" style="color: green; font-weight: bold; "><i class="fas fa-rupee-sign"></i> {{service.cost }}</p>
-                <p class="card-text mb-0" style="color: limegreen; font-weight: bold; "><i class="fa fa-phone"></i> {{service.contact}}</p>
-                <p class="card-text mb-0" style="color: orange; font-weight: bold; "><i class="fas fa-star"></i> {{service.get_rating | floatformat:1 }}</p>
-                <p class="card-text mb-0;">{{ service.address.city}} , {{ service.address.pin_code }}</p>
-                <a class="btn btn-primary" href="{% url 'service_edit_url' user.pk service.pk %}"> edit </a>
-                <a class="btn btn-primary" href="{% url 'service-detail-page' service.slug %}  ">View</a>
-                {% comment %} delete popup {% endcomment %}
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Delete
-                </button>
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true" style="background-color: rgba(70, 66, 66, 0.438);">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash" aria-hidden="true"></i>
-                          Delete</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-
-                        Are you sure you want to delete "{{ service.title | title }}" service?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                        <a class="btn btn-primary" href="{% url 'service_delete_url' user.pk service.pk %}">Yes</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div class="col-md-10 ">
+      <div class="row m-1 p-2 bg-white border rounded">
 
 
 
+        <div class="col-md-3 mt-1 border" style="height: 12rem; background-color: #f9f9f9;">
 
-              </div>
-            </div>
-          </div>
+          <img style=" object-fit: scale-down; height: inherit;" {% if service.get_image %}
+            src="{{ service.get_image }}" {% else %} src="{% static 'serviceapp/default_img.png' %}" {% endif %}
+            class=" card-img-top rounded-xl " alt="themesberg office" width="100%" height="280rem">
+
         </div>
 
+        <div class="col-md-6 mt-1">
+          <h5>{{ service.title | title }}</h5>
+          <div class="d-flex flex-row">
+            <div class="ratings mr-2"><i class="fa fa-star" style="color: rgb(0,113,188) ;"></i>
+            </div><span>{{ service.get_rating | floatformat:1 }}</span>
+          </div>
+          <ul class="list-group mb-1">
+            <li class="list-group-item small p-0">
+              <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">
+
+              </span>{{ service.address.city}} , {{ service.address.locality }}
+            </li>
+            <li class="list-group-item small p-0">
+              <span class="fas fa-bullseye mr-2" aria-hidden="true">
+
+              </span>{{ service.address.pin_code }}
+            </li>
+
+          </ul>
+          <p class="text-justify text-truncate para mb-0">{% if service.description %}
+            {{service.description}}
+            {% else %}
+            No Description
+            {% endif %}<br><br></p>
+        </div>
+        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+          <div class="d-flex flex-row align-items-center">
+            <h4 class="mr-1"><i class="fas fa-rupee-sign"></i>
+              {{ service.cost }}</h4>
+          </div>
+          <!-- <h6 class="text-success">Free shipping</h6> -->
+          <div class="d-flex flex-column mt-2">
+            <a class="btn btn-outline-primary btn-sm mt-2" type="button"
+              href="{% url 'service_edit_url' user.pk service.pk %} ">Edit</a>
+
+            <a class="btn btn-outline-primary btn-sm mt-2" type="button"
+              href="{% url 'service-detail-page' service.slug %} ">View</a>
+
+            <a type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Delete
+            </a>
+
+          </div>
+        </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+      style="background-color: rgba(70, 66, 66, 0.438);">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash" aria-hidden="true"></i>
+              Delete</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            Are you sure you want to delete "{{ service.title | title }}" service?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a class="btn btn-primary" href="{% url 'service_delete_url' user.pk service.pk %}">Yes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     {% endfor %}
   </div>
-
 </div>
+
 {% endblock %}
