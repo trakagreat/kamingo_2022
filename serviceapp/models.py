@@ -142,7 +142,7 @@ class ReviewModel(models.Model):
 def image_compressor(sender, **kwargs):
     if kwargs["created"]:
         with Image.open(kwargs["instance"].image.path) as photo:
-            photo.save(kwargs["instance"].image.path, optimize=True, quality=25)
+            photo.save(kwargs["instance"].image.path, optimize=True, quality=15)
 
 
 post_save.connect(image_compressor, sender=ImageModel)
