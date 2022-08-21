@@ -1,5 +1,11 @@
 {% load static %}
+<style>
+  .img-size{
+    height: 500rem;
 
+  }
+  
+</style>
   <!-- new caraoul  -->
 
   
@@ -41,7 +47,7 @@
           {% else %}
           {% for image in images %}
           <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
-              <img style=" object-fit: scale-down;" class="d-block rounded "  width="100%" height="" src= "{{ image.image.url }}"> 
+              <img style=" object-fit: scale-down;" class="d-block rounded img-size "  width="100%" height="" src= "{{ image.image.url }}"> 
             </div>
           {% endfor %}
 
