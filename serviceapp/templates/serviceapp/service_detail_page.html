@@ -2,8 +2,9 @@
 {% load static %}
 {% load ratings %}
 {% block title %}
-
+{{ service.category.name | title }}-{{ service.title }} 
 {% endblock %}
+<meta name="description" content="{{ service.description}}">
 {% block css_linking_block %}
 <link rel="stylesheet" href="{% static 'serviceapp/service_detials.css' %}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
