@@ -11,13 +11,15 @@ from django.contrib.auth.models import User
 
 
 
+
+
 # Create your views here.
 # Create your views here.
 class HomePageView(View):
     def get(self , request):
         return render(request , 'serviceapp/home.html')
 
-class FrontPageView(View):
+class FrontPageView(View , ):
     def get(self,request):
         context = {
             'filter':ServiceFilter(request.GET, queryset=ServiceModel.objects.all()),

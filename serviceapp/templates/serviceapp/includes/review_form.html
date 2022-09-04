@@ -1,54 +1,17 @@
-<div class="col mt-2">
 
-    <form method="POST" action="{% url 'service-detail-page' service.slug %}" novalidate>
+  <form method="POST" action="{% url 'service-detail-page' service.slug %}" novalidate>
         {% csrf_token %}
-        <div class="row">
-            <div class="col pb-2" >
-                <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample"
-                   role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Give Review
-                </a>
-            </div>
-            <div class="col"></div>
+      <p style=" color:grey; font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;margin-bottom: 0.1rem;">Rating</p>
 
-        </div>
-        <div class="collapse" id="collapseExample">
-
-
-            <div class="row" style="margin-top: 0.5rem">
-                <div class="col-md-12 mt-3 ">
-                    <p class="mb-0">
-                        Rating:
-                    </p>
-                </div>
-                <div class="col-md-12  ">
-                    <p>
-                        <select class="form-select" name="rating" id="">
+               <select class="form-select shadow-sm " name="rating" id="" style="border-radius: 0;border-style: solid;border-color: var(--bs-indigo);font-family: Roboto, sans-serif;">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option selected value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                    </p>
-                </div>
-            </div>
-            <div class="row " style="">
-                <div class="col-md-12 ">
-                    <p class="mb-0">
-                        Review:
-                    </p>
-                </div>
-                <div class="col-md-12">
-                    <p>
-                        <textarea class="form-control" name="content" placeholder="Give a review"></textarea>
-                    </p>
-                </div>
-                <div class="col-md-12">
-                    <button class="btn btn-success" type="submit"> submit</button>
-                </div>
+    <div class="mb-3"></div>
 
-            </div>
-        </div>
-    </form>
-</div>
+    <div class="mb-3"><textarea class="shadow-sm form-control" style="border-radius: 0;border-style: solid;border-color: var(--bs-indigo);font-family: Roboto, sans-serif;" class="form-control" name="content" placeholder="Give a Review" rows="4"></textarea></div>
+    <div class="mb-3"><button class="btn btn-light btn-sm shadow-sm" type="submit" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.8rem;">submit</button></div>
+</form>
