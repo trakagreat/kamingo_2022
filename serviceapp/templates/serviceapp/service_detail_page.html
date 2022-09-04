@@ -163,6 +163,13 @@
 
 <!--</div>-->
 
+<style>
+    .p-des p{
+    font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;
+    }
+
+</style>
+
 
 <div class="container" style="max-width: 850px;">
     <div>
@@ -194,7 +201,10 @@
                 <div class="col">
                     <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: var(--bs-purple);font-weight: bold;margin-bottom: 0.1rem;">Description</p>
                     {% if service.description %}
-                    <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;">{{ service.description|linebreaks }}</p>
+                    <div class="p-des">
+                              <p  >{{ service.description|linebreaks}}</p>
+                    </div>
+
                     {% else %}
                     <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;">No description is available.</p>
                     {% endif %}

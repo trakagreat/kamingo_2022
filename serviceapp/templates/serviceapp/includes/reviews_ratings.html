@@ -1,4 +1,4 @@
-<div class="text-start">
+
 
     {% if not service.reviews.exists %}
     <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;">no reviews yet :(</p>
@@ -7,7 +7,7 @@
 
     {% for review in service.reviews.all%}
 
-
+<div class="text-start">
     <p style="font-size: 0.8rem;font-family: Roboto, sans-serif;font-weight: bold;margin: 0;margin-top: 0.2rem;"><i
             class="fa fa-user-circle"></i>  {{ review.user.username }}</p>
     <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;"><i class="fa fa-star"></i>  {{ review.rating | floatformat:1 }}</p>
