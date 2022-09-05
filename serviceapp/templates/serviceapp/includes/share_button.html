@@ -1,10 +1,7 @@
 {% load static %}
-<button type="button" class="btn btn-outline-danger mt-2" id='share_{{service.pk}}' onclick="myFunction('{% url 'service-detail-page' service.slug %}')">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-<path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
-</svg>
-    Share
-  </button>
+
+<button class="btn btn-light btn-sm shadow-sm" type="button" id='share_{{service.pk}}' onclick="myFunction('{% url 'service-detail-page' service.slug %}')" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.8rem;margin: 0.1rem;"><i class="fa fa-share-alt"></i> share</button></div>
+
 
 <p class="result_{{service.pk}}"></p>
 

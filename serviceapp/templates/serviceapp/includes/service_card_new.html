@@ -3,75 +3,125 @@
 <style>
     .img-col{
        
-        height: 12rem;
-        background-color: #f9f9f9;
+        height: 8rem;
+
     }
     @media only screen and (max-width: 600px) {
         .img-col {
             
-            height: 16rem;
-            background-color: #f9f9f9;
+            height: 9rem;
+
         }
       }
 </style>
 
-<div class="col-md-10 ">
-<div class="row m-1 p-2 bg-white border rounded">
-   
+<!--<div class="col-md-10 ">-->
+<!--<div class="row m-1 p-2 bg-white border rounded">-->
+<!--   -->
 
-    {% comment %} <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a> {% endcomment %}
-    <div class="col-md-3 mt-1 border img-col">
-        <a href="{% url 'service-detail-page' service.slug %}" class="stretched-link"></a>
+<!--    {% comment %} <a class="stretched-link" href="{% url 'service-detail-page' service.slug %}  "></a> {% endcomment %}-->
+<!--    <div class="col-md-3 mt-1 border img-col">-->
+<!--        <a href="{% url 'service-detail-page' service.slug %}" class="stretched-link"></a>-->
 
-        <img style=" object-fit: scale-down; height: inherit;"
-           
-        {% if service.get_image %}
-         src="{{ service.get_image}}"
-        {% else %}
-        src="{% static 'serviceapp/default_img.png' %}"
-        {% endif %}
-       
-        class=" card-img-top rounded-xl " alt="themesberg office"
-            width="100%" height="280rem">
-       
-        </div>
-        
-    <div class="col-md-6 mt-1">
-        <h5>{{ service.title | title }}</h5>
-        <div class="d-flex flex-row">
-            <div class="ratings mr-2"><i class="fa fa-star" style="color: rgb(0,113,188) ;"></i>
-                    </div><span>{{ service.get_rating | floatformat:1 }}</span>
-        </div>
-        <ul class="list-group mb-1">
-            <li class="list-group-item small p-0">
-                <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">
+<!--        <img style=" object-fit: scale-down; height: inherit;"-->
+<!--           -->
+<!--        {% if service.get_image %}-->
+<!--         src="{{ service.get_image}}"-->
+<!--        {% else %}-->
+<!--        src="{% static 'serviceapp/default_img.png' %}"-->
+<!--        {% endif %}-->
+<!--       -->
+<!--        class=" card-img-top rounded-xl " alt="themesberg office"-->
+<!--            width="100%" height="280rem">-->
+<!--       -->
+<!--        </div>-->
+<!--        -->
+<!--    <div class="col-md-6 mt-1">-->
+<!--        <h5>{{ service.title | title }}</h5>-->
+<!--        <div class="d-flex flex-row">-->
+<!--            <div class="ratings mr-2"><i class="fa fa-star" style="color: rgb(0,113,188) ;"></i>-->
+<!--                    </div><span>{{ service.get_rating | floatformat:1 }}</span>-->
+<!--        </div>-->
+<!--        <ul class="list-group mb-1">-->
+<!--            <li class="list-group-item small p-0">-->
+<!--                <span class="fas fa-map-marker-alt mr-2" aria-hidden="true">-->
 
-                </span>{{ service.address.city}} , {{ service.address.locality }}
-            </li>
-            <li class="list-group-item small p-0">
-                <span class="fas fa-bullseye mr-2" aria-hidden="true">
+<!--                </span>{{ service.address.city}} , {{ service.address.locality }}-->
+<!--            </li>-->
+<!--            <li class="list-group-item small p-0">-->
+<!--                <span class="fas fa-bullseye mr-2" aria-hidden="true">-->
 
-                </span>{{ service.address.pin_code }}
-            </li>
+<!--                </span>{{ service.address.pin_code }}-->
+<!--            </li>-->
 
-        </ul>
-        <p class="text-justify text-truncate para mb-0">{% if service.description  %}
-            {{service.description}}
-        {% else %}
-        No Description
-        {% endif %}<br><br></p>
-    </div>
-    <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-        <div class="d-flex flex-row align-items-center">
-            <h4 class="mr-1"><i class="fas fa-rupee-sign"></i>
-                {{ service.cost }}</h4>
-        </div>
-        <!-- <h6 class="text-success">Free shipping</h6> -->
-        <div class="d-flex flex-column mt-2">
-            <a class="btn btn-primary btn-sm" type="button"  href="tel:{{ service.contact }}" >Call</a>
-            <a class="btn btn-outline-primary btn-sm mt-2" type="button" href="{% url 'service-detail-page' service.slug %}">View Details</a>
-            {% include 'serviceapp/includes/share_button.html' %}
+<!--        </ul>-->
+<!--        <p class="text-justify text-truncate para mb-0">{% if service.description  %}-->
+<!--            {{service.description}}-->
+<!--        {% else %}-->
+<!--        No Description-->
+<!--        {% endif %}<br><br></p>-->
+<!--    </div>-->
+<!--    <div class="align-items-center align-content-center col-md-3 border-left mt-1">-->
+<!--        <div class="d-flex flex-row align-items-center">-->
+<!--            <h4 class="mr-1"><i class="fas fa-rupee-sign"></i>-->
+<!--                {{ service.cost }}</h4>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; <h6 class="text-success">Free shipping</h6> &ndash;&gt;-->
+<!--        <div class="d-flex flex-column mt-2">-->
+<!--            <a class="btn btn-primary btn-sm" type="button"  href="tel:{{ service.contact }}" >Call</a>-->
+<!--            <a class="btn btn-outline-primary btn-sm mt-2" type="button" href="{% url 'service-detail-page' service.slug %}">View Details</a>-->
+<!--            {% include 'serviceapp/includes/share_button.html' %}-->
+<!--            </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+ <div class="row" style="max-height: 165rem;">
+            <div class="col px-1 ">
+
+            <div class="rounded shadow-sm border "
+                      {% if service.get_image %}
+                    style=" background-image: url('{{ service.get_image}}'); height: 100%;    background-size: cover;
+
+    background-position: center;
+    background-repeat: no-repeat; "
+
+             {% else %}
+                style=" background-image: url('{% static 'serviceapp/default_img.png' %}') center / cover no-repeat, #ffffff;"
+
+            {% endif %}
+                 >
+                <a href="{% url 'service-detail-page' service.slug %}" class="stretched-link"></a>
+
+
             </div>
+        </div>
+        <div class="col-7 col-md-9 col-lg-9 border shadow-sm" style="border-radius: 4px;">
+            <div>
+                <div style="margin: 0.1rem;">
+                    <div class="row">
+                        <div class="col">
+                            <div style="margin: 0.1rem;">
+                                <div class="row">
+                                    <div class="col d-sm-flex" style="text-align: left;">
+                                        <p class="text-truncate" style="font-family: Roboto, sans-serif;font-weight: bold;color: rgb(0,0,0); margin:0rem;">{{ service.title | title }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;"><i class="fa fa-star"></i> {{ service.get_rating | floatformat:1 }}</p>
+                                        <p style="font-size: 0.8rem;font-family: Roboto, sans-serif;font-weight: bold;margin: 0;margin-top: 0.2rem;"><i class="fa fa-rupee"></i> {{ service.cost }}</p>
+                                        <p style="font-size: 0.8rem;margin: 0;font-family: Roboto, sans-serif;color: #546856;"><i class="fa fa-map-marker"></i> {{ service.address.city}} , {{ service.address.locality }} , {{ service.address.pin_code }} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="text-align: right;"><a href="tel:{{ service.contact }}" class="btn btn-light btn-sm shadow-sm" type="button" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.8rem;margin: 0.1rem;"><i class="fa fa-phone"></i> {{ service.contact }}</a>
+            {% include 'serviceapp/includes/share_button.html' %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>

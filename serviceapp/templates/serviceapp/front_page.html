@@ -82,23 +82,26 @@
 
 <!-- new cards -->
 
-<div class="container mt-1 mb-5">
-    <div class="d-flex justify-content-center row">
-       
-            {% for service in filter.qs %}
+<!--<div class="container mt-1 mb-5">-->
+<!--    <div class="d-flex justify-content-center row">-->
+<!--       -->
+<!--            -->
+
+<!--
+-->
+<!--           -->
+<!--        -->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container" style="border-radius: 4px;max-width: 780px;margin-top: 0.5rem;">
+
+{% for service in filter.qs %}
 
             {% include 'serviceapp/includes/service_card_new.html' %}
-            
+
             {% endfor %}
-           
-        
-    </div>
 </div>
-
-
-
-
-
 
 
 
