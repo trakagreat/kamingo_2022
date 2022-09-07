@@ -19,14 +19,14 @@
      style="border: 0.1rem inherit rgb(33, 37, 41);max-height: none; background-color: white;">
     <div class="carousel-inner shadow-sm" style="">
         {% if not images %}
-        <div class="carousel-item active">
-            <img class="d-block rounded " style=" object-fit: scale-down;" width="100%" height=""
+        <div class="carousel-item active" style="height: 20rem;">
+            <img class="d-block rounded " style="height: inherit; " width="100%" 
                  src="{% static 'serviceapp/default_img.png' %}">
         </div>
         {% else %}
         {% for image in images %}
         <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
-            <img style=" object-fit: scale-down;" class="d-block rounded  " width="100%" height=""
+            <img style="height: inherit; " class="d-block rounded  " width="100%" height=""
                  src="{{ image.image.url }}">
         </div>
         {% endfor %}
