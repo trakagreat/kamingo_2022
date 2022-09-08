@@ -24,7 +24,20 @@
 
 
 
+<style>
+    .outerdiv div
+ {
+    border-width: 1px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: var(--bs-indigo);
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    color: var(--bs-indigo);
+   
+ }
 
+</style>
 
 
 
@@ -35,7 +48,7 @@
 
 
 {% comment %} {% include 'serviceapp/includes/filter_form.html' %} {% endcomment %}
-<div class="container d-flex justify-content-center ">
+{% comment %} <div class="container d-flex justify-content-center ">
 
     <div class="row justify-content-center " style="width: 100%; margin: 0 0.8rem;">
         <div class="" style="background-color: rgb(255, 255, 255); width: 100%;">
@@ -57,7 +70,7 @@
                         </div>
                         <div class=" col-6 mt-1 " style="width:20rem">
                             <h6>Pincode</h6>
-                            {{ filter.form.address__pin_code| add_class:"form-control" }}
+                            {{ filter.form.address__pin_code| add_class:"form-control"}}
                         </div>
                     </div>
                     <div class="row ml-3 mt-2">
@@ -73,29 +86,35 @@
 
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 
 
 
 
 
 
-<!-- new cards -->
-
-<!--<div class="container mt-1 mb-5">-->
-<!--    <div class="d-flex justify-content-center row">-->
-<!--       -->
-<!--            -->
-
-<!--
--->
-<!--           -->
-<!--        -->
-<!--    </div>-->
-<!--</div>-->
 
 <div class="container" style="border-radius: 4px;max-width: 780px;margin-top: 0.5rem;">
-
+    <div>
+        <a class="btn btn-light shadow btn-sm" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="color: var(--bs-blue);font-weight: bold;border-color: var(--bs-purple);border-radius: 0;">FILTER <i class="fa fa-filter"></i></a>
+        <div class="collapse " id="collapse-1">
+            <form action="" >
+                <div class="outerdiv">
+                    <div class="category mt-3">
+                        {{ filter.form.category | add_class:"form-control shadow" }}
+                    </div>
+                    <div class="category mt-3">
+                        {{ filter.form.address__city| add_class:"form-control shadow" }}
+                    </div>
+                    <div class="category mt-3 pincode">
+                        {{ filter.form.address__pin_code| add_class:"form-control shadow" }}
+                    </div>
+                    
+                </div>
+                <button class="btn btn-light btn-sm shadow my-2" type="submit" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;">Sumit</button></div>
+            </form>
+            </div>
+    <hr>
 {% for service in filter.qs %}
 
             {% include 'serviceapp/includes/service_card_new.html' %}
