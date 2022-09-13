@@ -96,22 +96,22 @@
 
 <div class="container" style="border-radius: 4px;max-width: 780px;margin-top: 0.5rem;">
     <div>
-        <a class="btn btn-light shadow btn-sm" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="color: var(--bs-blue);font-weight: bold;border-color: var(--bs-purple);border-radius: 0;">FILTER <i class="fa fa-filter"></i></a>
+        <a class="btn btn-light shadow-sm btn-sm" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="color: var(--bs-blue);font-weight: bold;border-color: var(--bs-purple);border-radius: 0;">FILTER <i class="fa fa-filter"></i></a>
         <div class="collapse " id="collapse-1">
             <form action="" >
                 <div class="outerdiv">
                     <div class="category mt-3">
-                        {{ filter.form.category | add_class:"form-control shadow" }}
+                        {{ filter.form.category | add_class:"form-control shadow-sm" }}
                     </div>
                     <div class="category mt-3">
-                        {{ filter.form.address__city| add_class:"form-control shadow" }}
+                        {{ filter.form.address__city| add_class:"form-control shadow-sm" }}
                     </div>
                     <div class="category mt-3 pincode">
-                        {{ filter.form.address__pin_code| add_class:"form-control shadow" }}
+                        {{ filter.form.address__pin_code| add_class:"form-control shadow-sm" }}
                     </div>
                     
                 </div>
-                <button class="btn btn-light btn-sm shadow my-2" type="submit" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;">Sumit</button></div>
+                <button class="btn btn-light btn-sm shadow-sm my-2" type="submit" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;">Sumit</button></div>
             </form>
             </div>
     <hr>
