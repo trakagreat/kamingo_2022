@@ -60,9 +60,9 @@ dashboard
             <a class="btn btn-outline-primary btn-sm mt-2" type="button"
               href="{% url 'service-detail-page' service.slug %} ">View</a>
 
-            <a type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Delete
-            </a>
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+              </button>
 
           </div>
         </div>
@@ -76,9 +76,6 @@ dashboard
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash" aria-hidden="true"></i>
               Delete</h5>
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Delete
-              </button>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            
           </div>
