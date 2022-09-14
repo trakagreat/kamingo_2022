@@ -137,8 +137,8 @@
 
                       {% else %}
                      
-                      <button class="btn btn-light btn-sm" type="button" style="border-color: var(--bs-indigo);border-radius: 0px;font-size: 0.8rem;font-weight: 700;color: var(--bs-indigo);margin-right: 0.5rem;">LOGIN</button>
-                      <button class="btn btn-light btn-sm" type="button" style="border-color: var(--bs-indigo);border-radius: 0px;font-size: 0.8rem;font-weight: 700;color: var(--bs-indigo);margin-right: 0.1rem;">SIGNUP</button>
+                      <a class="btn btn-light btn-sm" href="{% url 'account_login' %}" type="button" style="border-color: var(--bs-indigo);border-radius: 0px;font-size: 0.8rem;font-weight: 700;color: var(--bs-indigo);margin-right: 0.5rem;">LOGIN</a>
+                      <a class="btn btn-light btn-sm" href="{% url 'account_signup' %}" type="button" style="border-color: var(--bs-indigo);border-radius: 0px;font-size: 0.8rem;font-weight: 700;color: var(--bs-indigo);margin-right: 0.1rem;">SIGNUP</a>
                       {% endif %}
                     </li>
                 </ul>
