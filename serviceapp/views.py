@@ -150,7 +150,8 @@ class PrivcayPolicyView(View):
 class Search_result_page(View):
     def post(self, request):
         all_services = ServiceModel.objects.all
-        searched = request.POST['searched']
+        searched = request.POST['searched'].title()
+        
         
         services = ServiceModel.objects.filter(Q(title__contains = searched) | Q(category__name__contains = searched))
 
