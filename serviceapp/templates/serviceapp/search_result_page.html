@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %} kamingo
-
+{% load widget_tweaks %}
 {% endblock %}
 {% block css_linking_block %}
 
@@ -18,6 +18,33 @@
 
 {% block body %}
 <div class="container" style="border-radius: 4px;max-width: 1260px;margin-top: 0.5rem;">
+    <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
+
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" placeholder="Search for Service" aria-label="Search" name="searched">
+        <button class="btn btn-light btn-sm shadow-sm " style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" type="submit">Search</button>
+
+    </form>
+    <div>
+        <a class="btn btn-light shadow-sm btn-sm" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="color: var(--bs-blue);font-weight: bold;border-color: var(--bs-purple);border-radius: 0;">FILTER <i class="fa fa-filter"></i></a>
+        <div class="collapse " id="collapse-1">
+            <form action="" >
+                <div class="outerdiv">
+                    <div class="category mt-3">
+                        {{ filter.form.category | add_class:"form-control shadow-sm" }}
+                    </div>
+                    <div class="category mt-3">
+                        {{ filter.form.address__city| add_class:"form-control shadow-sm" }}
+                    </div>
+                    <div class="category mt-3 pincode">
+                        {{ filter.form.address__pin_code| add_class:"form-control shadow-sm" }}
+                    </div>
+                    
+                </div>
+                <button class="btn btn-light btn-sm shadow-sm my-2" type="submit" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;">Sumit</button></div>
+            </form>
+            </div>
+    <hr>
 <div class="row">
     
         {% if searched %}
