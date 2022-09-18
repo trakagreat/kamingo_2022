@@ -19,16 +19,23 @@
 {% block body %}
 <div class="container" style="border-radius: 4px;max-width: 1260px;margin-top: 0.5rem;">
 <div class="row">
-    <div class="col-md-6">
+    
         {% if searched %}
             <p>searched for "{{ searched }}"</p>
             {% for service in services %}
-
+            <div class="col-md-6">
                 {% include 'serviceapp/includes/service_card_new.html' %}
-        
+            </div>
             {% endfor %}
-        {% endif %}
-    </div>
+   
+        {% else %}
+            {% for service in all_services %}
+            <div class="col-md-6">
+            {% include 'serviceapp/includes/service_card_new.html' %}
+        </div>
+            {% endfor %}
+            {% endif %}
+    
 
 </div>
 </div>
