@@ -157,6 +157,7 @@ class Search_result_page(View):
             'searched':searched,
             'services':services,
             'all_services':all_services,
+            'filter':ServiceFilter(request.GET, queryset=ServiceModel.objects.all()),
 
         })
 
