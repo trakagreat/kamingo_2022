@@ -15,21 +15,23 @@
       }
 </style>
 
- <div class="row mb-2" style="max-height: 165rem;">
-            <div class="col px-1 ">
+
+
+
+    <div class="row mb-2" style="max-height: 165rem;">
+        <div class="col px-1 ">
 
             <div class="rounded shadow-sm border "
                       {% if service.get_image %}
-                    style=" background-image: url('{{ service.get_image}}'); height: 100%;    background-size: cover;
+                        style=" background-image: url('{{ service.get_image}}'); height: 100%;    background-size: cover;
 
-    background-position: center;
-    background-repeat: no-repeat; "
+                        background-position: center;
+                        background-repeat: no-repeat; "
 
-             {% else %}
-                style=" background-image: url('{% static 'serviceapp/default_img.png' %}') center / cover no-repeat, #ffffff;"
+                        {% else %}
+                        style=" background-image: url('{% static 'serviceapp/default_img.png' %}') center / cover no-repeat, #ffffff;"
 
-            {% endif %}
-                 >
+                        {% endif %}>
                 <a href="{% url 'service-detail-page' service.slug %}" class="stretched-link"></a>
 
 
