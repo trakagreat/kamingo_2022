@@ -98,30 +98,45 @@ a:hover {
 
 <div class="col " style="padding: 0 0;"   >
     <div class="row p-4 mx-0 d-flex justify-content-center" style="background-image:
-        linear-gradient(to top, #626262, #525253, #414245, #313337, #212529); ">
+        linear-gradient(to top, #626262, #525253, #414245, #313337, #212529); align-items: center;">
+        
         <div class="col-lg-8">
+
             <div class="text-center my-5">
-                <h1 class=" fw-bolder text-white mb-1">The Secret of Growing A 
+            
+                 <!-- <h1 class=" fw-bolder text-white mb-1">The Secret of Growing A 
                     Business</h1>
-                <p class="lead text-white mb-1">or</p>
-                <h3 class=" fw-bolder text-white mb-2">Need A Service Provider?
-                </h3>
-                <p class="lead text-white mb-4">just kamingo it !</p>
-                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                    <a class="btn btn-primary btn-lg px-4 me-sm-3 shadow" {% if user.is_authenticated %}
+                <p class="lead text-white mb-1">or</p> -->
+                <!-- <div class="d-grid mb-2 gap-3 d-sm-flex justify-content-sm-center">
+                    <a class="btn btn-primary btn-sm px-4 me-sm-3 shadow" {% if user.is_authenticated %}
                         href="{% url 'service_form_url' %}"
                         {% else %}
                         href="{% url 'account_login' %}"
                         {% endif %}>Create Service</a>
-                    <a class="btn btn-outline-light btn-lg px-4 shadow" href="{% url 'front-page' %}">Get Service </a>
-                </div>
+                    <a class="btn btn-outline-light btn-sm px-4 shadow" href="{% url 'front-page' %}">Get Service </a>
+                </div>  -->
+                <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
+
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" placeholder="Search for Service" aria-label="Search" name="searched">
+                    <button class="btn btn-light btn-sm shadow-sm " style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" type="submit">Search</button>
+            
+                </form>
+                <img class="" src="/static/serviceapp/kamingo_icon.png" height=""
+                width="20%" alt="" style="object-fit: scale-down;">
+                <h3 class=" fw-bolder text-white mb-2">Need A Service Provider?
+                </h3>
+                <p class="lead text-white mb-4">just kamingo it !</p> 
+              
+             
+            
             </div>
         </div>
-        <div class="col-lg-4 p-2 justify-content-center" style="text-align:
+        <!-- <div class="col-lg-4 p-2 justify-content-center" style="text-align:
             center;">
             <img class="" src="/static/serviceapp/kamingo_icon.png" height=""
                 width="50%" alt="" style="object-fit: scale-down;">
-        </div>
+        </div> -->
     </div>
 
 

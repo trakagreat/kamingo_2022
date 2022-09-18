@@ -95,6 +95,13 @@
 
 
 <div class="container" style="border-radius: 4px;max-width: 1260px;margin-top: 0.5rem;">
+    <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
+
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" placeholder="Search for Service" aria-label="Search" name="searched">
+        <button class="btn btn-light btn-sm shadow-sm " style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" type="submit">Search</button>
+
+    </form>
     <div>
         <a class="btn btn-light shadow-sm btn-sm" data-bs-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="color: var(--bs-blue);font-weight: bold;border-color: var(--bs-purple);border-radius: 0;">FILTER <i class="fa fa-filter"></i></a>
         <div class="collapse " id="collapse-1">

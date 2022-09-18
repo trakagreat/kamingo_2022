@@ -16,5 +16,8 @@ urlpatterns = [
     path('image', views.ServiceImageUploadView.as_view(), name='service_image_upload_url'),
     path('test', views.TestView.as_view(), name='test'),
     path('legal/privacy-policy', views.PrivcayPolicyView.as_view()),
+    path('search/', views.Search_result_page.as_view(), name='search_result_page'),
+
+    
 ]
 # 

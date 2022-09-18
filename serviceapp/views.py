@@ -1,3 +1,4 @@
+from unicodedata import category, name
 import requests
 from django.shortcuts import render, reverse
 from .forms import ServiceForm, AddressForm
@@ -145,3 +146,15 @@ class PrivcayPolicyView(View):
     def get(self, request):
 
         return render(request, 'serviceapp/privacy_policy.html')
+
+class Search_result_page(View):
+    def post(self, request):
+        searched = request.POST['searched']
+        services = ServiceModel.objects.filter(title__contains = searched)
+
+        return render(request, 'serviceapp/search_result_page.html', {
+            'searched':searched,
+            'services':services,
+        })
+
+

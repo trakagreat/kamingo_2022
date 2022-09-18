@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} kamingo
+
+{% endblock %}
+{% block css_linking_block %}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+<script src="https://kit.fontawesome.com/61870727ed.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container" style="border-radius: 4px;max-width: 1260px;margin-top: 0.5rem;">
+<div class="row">
+    <div class="col-md-6">
+        {% if searched %}
+            <p>searched for "{{ searched }}"</p>
+            {% for service in services %}
+
+                {% include 'serviceapp/includes/service_card_new.html' %}
+        
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+</div>
+
+
+
+{% endblock %}
