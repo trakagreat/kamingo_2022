@@ -112,7 +112,7 @@ Service edit
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn btn-primary" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" >Yes</button>
+          <a type="button"  href="{% url 'service_delete_url' user.pk service.pk %}" class="btn btn-primary" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" >Yes</a>
         </div>
       </div>
     </div>
