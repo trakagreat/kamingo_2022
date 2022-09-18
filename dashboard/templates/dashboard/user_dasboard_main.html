@@ -136,9 +136,9 @@ dashboard
           </div>
           <div class="row">
               <div class="col" style="text-align: right;">
-                <a  class="btn btn-light btn-sm shadow-sm " type="button" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="fa fa-trash"></i> 
-                  Delete
+                <a  class="btn btn-light btn-sm shadow-sm " href="{% url 'service-detail-page' service.slug %}" type="button" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;">
+                  <i class="fa fa-angle-down"></i> 
+                  View
                 </a>
                 <a href="{% url 'service_edit_url' user.pk service.pk %}" class="btn btn-light btn-sm shadow-sm" type="button" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;">
                   <i class="fa fa-paint-brush"></i> 
@@ -152,25 +152,6 @@ dashboard
 </div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {{ service.title | title }}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

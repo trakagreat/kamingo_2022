@@ -15,6 +15,10 @@ Service edit
 
 <div class="d-flex justify-content-center" style="padding: 1rem; justify-content: center">
     <div class="shadow-sm" style="padding: 1rem; background-color: white; width: 40rem">
+        <a  class="btn btn-light btn-sm shadow-sm " type="button" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa fa-trash"></i> 
+            Delete
+          </a>
         <form class="needs-validation" action="{% url 'service_edit_url' pk pk_service %}" method="POST" novalidate enctype="multipart/form-data">
 
             {% csrf_token %}
@@ -93,6 +97,33 @@ Service edit
     </div>
 
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <i class="fa fa-trash"></i> You really want to Delete   "{{ service.title | title }}" ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" style="box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.33);border-radius: 0.1rem;color: var(--bs-purple);font-weight: bold;background: rgb(255,255,255);font-family: Roboto, sans-serif;border: 0.1rem solid var(--bs-purple);font-size: 0.7rem;margin: 0.1rem;" >Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
 <script>
     (function () {
         'use strict'
