@@ -1,12 +1,12 @@
 {% load static %}
 <style>
   .img-size{
-    height: auto;
+    height: 30rem;
 
   }
   @media only screen and (max-width: 600px) {
         .img-size {
-            height: auto;
+            height: 20rem;
         }
       }
 
@@ -17,7 +17,7 @@
 
 <div id="carouselExampleControls" class="carousel slide  border rounded mt-2 mb-1" data-bs-ride=""
      style="border: 0.1rem inherit rgb(33, 37, 41);max-height: none; background-color: white;">
-    <div class="carousel-inner shadow-sm" style="">
+    <div class="carousel-inner img-size shadow-sm" style="">
         {% if not images %}
         <div class="carousel-item active" style="height: 20rem;">
             <img class="d-block rounded " style="height: inherit; " width="100%" 
