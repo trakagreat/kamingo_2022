@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .filters import ServiceFilter
 from .data.citieslist import cities
 from django.contrib.auth.models import User
-
+from django.db.models import Q
 
 
 
@@ -151,7 +151,8 @@ class Search_result_page(View):
     def post(self, request):
         all_services = ServiceModel.objects.all
         searched = request.POST['searched']
-        services = ServiceModel.objects.filter(title__contains = searched)
+        
+        services = ServiceModel.objects.filter(Q(title__contains = searched) | Q(category__name__contains = searched))
 
         return render(request, 'serviceapp/search_result_page.html', {
             'searched':searched,
