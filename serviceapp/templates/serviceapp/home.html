@@ -75,10 +75,62 @@ a:hover {
 {% block body %}
 
 
+<div class="container text-center" style="padding: 2rem;">
+    <img src="/static/serviceapp/kamingo_icon.png" style="width: 50px; " />
+    <h3 style="font-family: Roboto, sans-serif;color: rgb(100, 100, 100); ">Need a Service Provider?</h3>
+    <h6 style="font-family: Roboto, sans-serif;color:   rgb(73, 0, 162);">kamingo it </h6>
+ 
+        <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
+
+            {% csrf_token %}
+            <input type="search" name="searched" class="shadow form-control form-control" style="border-radius: 0;border-style: solid;border-color: var(--bs-indigo);" />
+            <button class="btn btn-primary btn shadow-sm" type="button" style="border-radius: 0;border-style: solid;border-color: var(--bs-indigo);">search</button>
+        </form>
+  
+    <div class="text-center d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center d-flex" style="margin-top: 1rem;text-align: center;">
+        <a  href="{% url 'account_login' %}" class="btn btn-light btn-sm shadow-sm" type="button" style="border-radius: 0;margin: 0.5rem;border-style: solid;border-color: var(--bs-indigo);font-family: Roboto, sans-serif;font-weight: bold;color: var(--bs-blue);">Signup</a>
+        <a  href="{% url 'front-page' %}" class="btn btn-primary btn-sm shadow-sm" type="button" style="border-radius: 0;margin: 0.5rem;border-style: solid;border-color: var(--bs-purple);">Get service</a>
+    </div>
+
+</div>
+
+<style>
+
+    .grid-button{
+
+    color: blue;
+    border-radius: 0;
+    margin: 0.2rem;
+    width: 6rem;
+    height: 6rem;
+    border-style: solid;
+    border-color: var(--bs-indigo);
+    border-color: rgb(255);
+    background: rgb(248, 249, 250);
+    color: var(--bs-blue);font-size: 16px;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    
+    }
+</style>
+<div class="container text-center" style="padding: 2rem;">
+    <div class="text-center" style="margin: 1rem;">
+        <a href="/service?category=9&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Transport<i class="fa fa-truck" style="font-size: 30px;"></i></a>
+        <a href="/service?category=1&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Housing<i class="fa fa-home" style="font-size: 30px;"></i></a>
+        <a href="/service?category=11&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Painter<i class="fas fa-paint-brush" style="font-size: 30px;"></i></a>
+        <a href="/service?category=2&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Fashion<i class="fas fa-female" style="font-size: 30px;"></i></a>
+        <a href="/service?category=3&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Cloathing<i class="fab fa-black-tie" style="font-size: 30px;"></i></a>
+        <a href="/service?category=12&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Repair<i class="fas fa-laptop" style="font-size: 30px;"></i></a>
+        <a href="/service?category=4&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Finance<i class="fa fa-money" style="font-size: 30px;"></i></a>
+        <a href="/service?category=7&address__city=&address__pin_code=" class="btn btn-light shadow-sm grid-button" type="button" style="">Mechanic<i class="fas fa-hammer" style="font-size: 30px;"></i></a></div>
+    <img src="/static/serviceapp/kamingo_worker.png" style="width: 280px; margin: 1rem;" />
+</div>
+
 <!-- <div class="container">
     <div class="row" style="margin-top: 1rem;">
         <div class="col-md-6">
-            <div class="text-center" style="margin: 1rem;"><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-truck"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-home"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-paint-brush"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-female"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-black-tie"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fas fa-laptop"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="far fa-money-bill-alt"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fas fa-hammer"></i></button></div>
+            <div class="text-center" style="margin: 1rem;">
+            <button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-truck"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-home"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-paint-brush"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-female"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fa fa-black-tie"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fas fa-laptop"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="far fa-money-bill-alt"></i></button><button class="btn btn-light shadow-sm" type="button" style="border-radius: 0;margin: 0.2rem;width: 4rem;height: 4rem;border-style: solid;border-color: var(--bs-indigo);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgb(248, 249, 250);"><i class="fas fa-hammer"></i></button></div>
         </div>
         <div class="col-md-6 align-self-center" style="text-align: center;">
             <h6 style="font-family: Roboto, sans-serif;font-weight: bold;font-style: normal;color: var(--bs-purple);">Need A Service Provider?<br /> just kamingo it !<br /></h6><img src="/static/serviceapp/kamingo_icon.png" style="width: 68px;" />
@@ -86,7 +138,8 @@ a:hover {
     </div>
     <div class="row" style="margin-top: 1rem;">
         <div class="col-md-6 align-self-center">
-            <div class="text-center" style="margin: 1rem;"><button class="btn btn-primary btn-lg shadow-sm" type="button" style="font-weight: normal;font-family: Roboto, sans-serif;background: var(--bs-blue);border-color: var(--bs-indigo);border-radius: 0;">Create Your on service <i class="fas fa-plus"></i></button></div>
+            <div class="text-center" style="margin: 1rem;">
+            <button class="btn btn-primary btn-lg shadow-sm" type="button" style="font-weight: normal;font-family: Roboto, sans-serif;background: var(--bs-blue);border-color: var(--bs-indigo);border-radius: 0;">Create Your on service <i class="fas fa-plus"></i></button></div>
         </div>
         <div class="col-md-6 align-self-center" style="text-align: center;">
             <h6 style="font-family: Roboto, sans-serif;font-weight: bold;font-style: normal;color: var(--bs-purple);">The Secret of Growing A <br /> Business<br /></h6><img src="/static/serviceapp/kamingo_worker.png" style="width: 160px;" />
@@ -96,7 +149,7 @@ a:hover {
 
     -->
 
-<div class="col " style="padding: 0 0;"   >
+<!-- <div class="col " style="padding: 0 0;"   >
     <div class="row p-4 mx-0 d-flex justify-content-center" style="background-image:
         linear-gradient(to top, #626262, #525253, #414245, #313337, #212529); align-items: center;">
         
@@ -115,10 +168,10 @@ a:hover {
                         {% endif %}>Create Service</a>
                     <a class="btn btn-outline-light btn-sm px-4 shadow" href="{% url 'front-page' %}">Get Service </a>
                 </div>  -->
-                <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
+                <!-- <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
 
                     {% csrf_token %}
-                    <input class="form-control me-2" type="search" style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" placeholder="Search for Service" aria-label="Search" name="searched">
+                    <input class="form-control me-2" type="search" style="color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" placeholder="Search for a Service" aria-label="Search" name="searched">
                     <button class="btn btn-light btn-sm shadow-sm " style="font-weight: bold;color: var(--bs-purple);border-style: solid;border-color: var(--bs-purple);border-radius: 0;" type="submit">Search</button>
             
                 </form>
@@ -131,12 +184,12 @@ a:hover {
              
             
             </div>
-        </div>
+        </div> -->
         <!-- <div class="col-lg-4 p-2 justify-content-center" style="text-align:
             center;">
             <img class="" src="/static/serviceapp/kamingo_icon.png" height=""
                 width="50%" alt="" style="object-fit: scale-down;">
-        </div> -->
+        </div> 
     </div>
 
 
@@ -211,7 +264,7 @@ a:hover {
 
 
 
-
+ -->
 
 
 
