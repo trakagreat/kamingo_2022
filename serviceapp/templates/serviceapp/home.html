@@ -88,7 +88,13 @@ a:hover {
         </form>
   
     <div class="text-center d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center d-flex" style="margin-top: 1rem;text-align: center;">
+        {% if user.is_authenticated %}
+            <a  href="{% url 'service_form_url' %}" class="btn btn-light btn-sm shadow-sm" type="button" style="border-radius: 0;margin: 0.5rem;border-style: solid;border-color: var(--bs-indigo);font-family: Roboto, sans-serif;font-weight: bold;color: var(--bs-green);">Create</a>
+
+        
+        {% else %}
         <a  href="{% url 'account_login' %}" class="btn btn-light btn-sm shadow-sm" type="button" style="border-radius: 0;margin: 0.5rem;border-style: solid;border-color: var(--bs-indigo);font-family: Roboto, sans-serif;font-weight: bold;color: var(--bs-blue);">Signup</a>
+        {% endif %}
         <a  href="{% url 'front-page' %}" class="btn btn-primary btn-sm shadow-sm" type="button" style="border-radius: 0;margin: 0.5rem;border-style: solid;border-color: var(--bs-purple);">Get service</a>
     </div>
 
@@ -157,7 +163,7 @@ a:hover {
 
             <div class="text-center my-5">
             
-                 <!-- <h1 class=" fw-bolder text-white mb-1">The Secret of Growing A 
+                  <h1 class=" fw-bolder text-white mb-1">The Secret of Growing A 
                     Business</h1>
                 <p class="lead text-white mb-1">or</p> -->
                 <!-- <div class="d-grid mb-2 gap-3 d-sm-flex justify-content-sm-center">
