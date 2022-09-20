@@ -153,7 +153,7 @@ class Search_result_page(View):
         searched = request.POST['searched'].title()
         
         
-        services = ServiceModel.objects.filter(Q(title__contains = searched) | Q(category__name__contains = searched))
+        services = ServiceModel.objects.filter(title__contains = searched ,category__name__contains = searched , user__contains = searched)
 
         return render(request, 'serviceapp/search_result_page.html', {
             'searched':searched,
