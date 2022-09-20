@@ -25,6 +25,10 @@
 
 
 <style>
+    .no-display{
+        display: none;
+        color: blue;
+    }
     .outerdiv div
  {
     border-width: 1px;
@@ -40,7 +44,11 @@
 </style>
 
 
-
+<div class="text-center" id="spinner-box">
+    <img src="{% static 'serviceapp/kamingo_loading.png' %}" alt="">
+    <h4>Take a Chill Pill..</h4>
+    <div class="spinner-border" role="status"></div>
+  </div>
 
 {% comment %} {% bootstrap_form filter.form %} {% endcomment %}
 
@@ -94,7 +102,7 @@
 
 
 
-<div class="container" style="border-radius: 4px;max-width: 1260px;margin-top: 0.5rem;">
+<div class="container no-display" style="border-radius: 4px;max-width: 1260px;margin-top: 0.5rem;" id="list">
     <form action="{% url 'search_result_page'  %}" method="POST" class="d-flex mb-2">
 
         {% csrf_token %}
@@ -122,33 +130,19 @@
             </form>
             </div>
     <hr>
-    <div class="row">
-{% for service in filter.qs %}
-            <div class="col-md-6">
-                
-                {% include 'serviceapp/includes/service_card_new.html' %}
-                
+    <div class="row "  >
+        {% for service in filter.qs %}
+            <div class="col-md-6"  >
+                {% include 'serviceapp/includes/service_card_new.html' %} 
             </div>
-            {% endfor %}
-        </div>
+        {% endfor %}
+    </div>
+   
+
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script type="text/javascript" src="{% static 'serviceapp/loader.js' %}"></script>
 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.js' %}"></script>
 {% endblock %}

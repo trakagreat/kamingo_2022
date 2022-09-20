@@ -1,3 +1,21 @@
+<style>
+    .no-display{
+        display: none;
+        color: blue;
+    }
+    
+
+
+</style>
+
+
+<div class="text-center" id="spinner-box">
+    <img src="{% static 'serviceapp/kamingo_loading.png' %}" alt="">
+    <h4>Take a Chill Pill..</h4>
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+
 <div class="d-flex justify-content-center">
     <p class="h5 lead ">Create new service</p>
 </div>
@@ -36,3 +54,5 @@
     <span class="step"></span>
     <span class="step"></span>
 </div>
+
+<script type="text/javascript" src="{% static 'serviceapp/loader.js' %}"></script>
